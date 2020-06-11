@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="esdk-obs-java-3.19.11.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/esdk-obs-java-3.19.11.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jackson-annotations-2.10.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jackson-core-2.10.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jackson-databind-2.10.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/log4j-api-2.12.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/log4j-core-2.12.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/okhttp-3.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/okio-1.14.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

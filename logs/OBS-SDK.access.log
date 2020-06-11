@@ -1,0 +1,240 @@
+main|INFO |2020-06-10 14:07:28 099|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 14:08:55 614|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 14:11:38 331|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 14:13:40 048|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 14:13:40 790|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 14:37:59 129|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 14:38:00 138|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 14:39:25 780|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 14:39:26 401|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 15:14:05 982|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 15:14:52 849|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 15:18:38 082|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 15:19:03 936|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 15:20:09 783|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 15:26:54 793|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 15:28:05 254|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 15:28:06 185|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 15:30:27 028|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 15:30:28 009|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 15:52:38 767|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 15:52:39 683|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 15:52:49 473|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:00:24 901|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:06:03 321|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:07:17 232|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:07:48 587|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:09:26 453|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:10:08 927|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:11:06 691|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:12:11 436|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:16:31 115|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:19:23 900|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:22:31 496|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:22:52 293|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:23:22 344|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:24:50 858|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:32:58 846|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:34:39 329|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:35:08 580|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:37:57 084|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:50:50 940|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 16:51:27 016|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 18:27:45 807|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 18:40:26 316|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 18:42:51 382|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 18:43:18 748|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 18:43:55 941|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 19:16:48 338|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 19:17:05 526|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 19:17:05 864|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_java%2FCreateBucket.java' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 11:17:05 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729DF2AAB0B822E6C1FF5D2380</RequestId><HostId>5iI2UVtMpXo3epTo+WqUjhkPLVNFqt0rPwJXsj2IArmvD6uu8FpMFjGU0S3DHZT2</HostId><Key>codeTemplate_java/CreateBucket.java</Key></Error>
+2020-06-10 19:17:05 867|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 19:17:05|2020-06-10 19:17:05|||404|
+
+main|INFO |2020-06-10 19:22:40 109|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 19:23:15 759|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 19:23:16 182|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_java%2FCreateBucket.java' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 11:23:16 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729DF85135B813005C34708712</RequestId><HostId>uiOE0AD6MPEoHCw1YCnE8/PwUai2c8k5RqBPZ8V2tFQUDQ/YPNDKFKwrgCfYoOaj</HostId><Key>codeTemplate_java/CreateBucket.java</Key></Error>
+2020-06-10 19:23:16 185|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 19:23:15|2020-06-10 19:23:16|||404|
+
+main|INFO |2020-06-10 19:34:25 912|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 19:37:33 520|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 19:37:36 522|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_java%2FCreateBucket.java' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 11:37:36 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E0571ADB8217A6254444381</RequestId><HostId>B0FpJ6qeWOVr3Q8CCZnxor+fuVLkJy75W+cDtrj18R1A34ko1ajiAml3o/u2IMbW</HostId><Key>codeTemplate_java/CreateBucket.java</Key></Error>
+2020-06-10 19:37:36 532|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 19:37:35|2020-06-10 19:37:36|||404|
+
+main|INFO |2020-06-10 19:39:14 452|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 19:40:02 951|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 19:40:03 680|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_java%2FCreateBucket.java' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 11:40:03 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E07B016B8218E6E2CE0D632</RequestId><HostId>B0FpJ6qeWOVr3Q8CCZnxor+fuVLkJy75W+cDtrj18R1A34ko1ajiAml3o/u2IMbW</HostId><Key>codeTemplate_java/CreateBucket.java</Key></Error>
+2020-06-10 19:40:03 693|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 19:40:02|2020-06-10 19:40:03|||404|
+
+main|INFO |2020-06-10 19:40:27 479|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 19:42:31 068|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 19:43:29 771|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 19:43:45 602|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_java%2FCreateBucket.java' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 11:43:45 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E0B1359B8165B5F723ADE13</RequestId><HostId>ExSsPBQ4UgOtbGQ5BgBJZ3ooiHJhKaNmCGVu0jYRGADXbEm5uoWND4cVMqNBnWqy</HostId><Key>codeTemplate_java/CreateBucket.java</Key></Error>
+2020-06-10 19:43:45 612|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 19:43:44|2020-06-10 19:43:45|||404|
+
+main|INFO |2020-06-10 19:48:21 484|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 19:50:10 860|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 19:50:21 715|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_java%2FCreateBucket.java' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 11:50:21 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E111E2FB0172A765F5840B8</RequestId><HostId>A1YgnXrfgTP1UHWj6YakqyOhujjc1Oqu4OfmCu6sgos7RRp7Wmzvk8WipJXyDSV9</HostId><Key>codeTemplate_java/CreateBucket.java</Key></Error>
+2020-06-10 19:50:21 726|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 19:50:20|2020-06-10 19:50:21|||404|
+
+main|INFO |2020-06-10 19:50:45 846|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 19:51:16 435|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 19:52:22 403|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_java%2FCreateBucket.java' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 11:52:22 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E12F5EBB41021F63D873108</RequestId><HostId>95ymFckAHu0wBX+dm2nFH4TKYkqlIZbKzEiqJPkvpWok4KBQ9py4mz/DtF9remKH</HostId><Key>codeTemplate_java/CreateBucket.java</Key></Error>
+2020-06-10 19:52:22 414|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 19:52:21|2020-06-10 19:52:22|||404|
+
+main|INFO |2020-06-10 19:53:00 728|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 19:53:01 928|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 19:54:44 284|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 19:54:55 069|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 19:54:55 646|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 19:54:56 007|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_java%2FCreateBucket.java' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 11:54:55 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E154E59B01361C359C0AFF6</RequestId><HostId>ikLAmqRHLArfcPv5X7rDVsNACnSWtKvOzx5wr9St/8FyK8EXeA/wuFhQSdteK3hB</HostId><Key>codeTemplate_java/CreateBucket.java</Key></Error>
+2020-06-10 19:54:56 009|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 19:54:55|2020-06-10 19:54:56|||404|
+
+main|INFO |2020-06-10 19:55:29 578|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 19:55:48 607|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 20:09:04 866|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 20:09:05 867|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 20:09:06 286|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_java%2FCreateBucket.java' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 12:09:06 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E2247A1B8202D6F81BC5640</RequestId><HostId>gH1WnP1OwGP/oojr5xzqlVj57BqMGw3FgkUtClbYtDzVYoqr/Bdd+4Oo8tah6hj4</HostId><Key>codeTemplate_java/CreateBucket.java</Key></Error>
+2020-06-10 20:09:06 288|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 20:09:05|2020-06-10 20:09:06|||404|
+
+main|INFO |2020-06-10 20:09:23 830|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 20:09:24 322|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 20:09:40 053|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 20:09:47 946|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 20:09:48 303|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 20:09:48 640|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_python%2FListBuckets.py' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 12:09:48 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E22ED49B01EC1ADFE385859</RequestId><HostId>X1FwrjlPiQyFLfq3widUCu7ciWuPnepuWqEkbg9mNkEN7abRoV2pwMSrps+kXwYk</HostId><Key>codeTemplate_python/ListBuckets.py</Key></Error>
+2020-06-10 20:09:48 643|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 20:09:48|2020-06-10 20:09:48|||404|
+
+AWT-EventQueue-0|INFO |2020-06-10 20:09:48 646|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 20:09:49 009|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_go%2FListBuckets.go' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 12:09:48 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E22EEC0B022F9572A892B87</RequestId><HostId>0M3oEP6nDJN0OMZf8V+WoH9rBKK4rymeoPKPmELmIo+o058hNOyF0iIQ3k1jXlng</HostId><Key>codeTemplate_go/ListBuckets.go</Key></Error>
+2020-06-10 20:09:49 011|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 20:09:48|2020-06-10 20:09:49|||404|
+
+main|INFO |2020-06-10 20:24:53 212|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 20:25:22 918|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 20:25:23 366|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 20:25:23 728|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_python%2FListBuckets.py' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 12:25:23 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E3131F9B819D5A3AD64F27A</RequestId><HostId>/fatBvIyrTz1203U4OvSiamIx/Zla1w254qoURKonGGfB0eNK4tO4X0ESAQkM47A</HostId><Key>codeTemplate_python/ListBuckets.py</Key></Error>
+2020-06-10 20:25:23 729|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 20:25:23|2020-06-10 20:25:23|||404|
+
+AWT-EventQueue-0|INFO |2020-06-10 20:25:23 730|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 20:25:24 206|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_go%2FListBuckets.go' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 12:25:24 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E31339EB81292BC9D73C295</RequestId><HostId>75So8LGZ+uVQu7Hq1eylY0URx1m5q4alkhDXulkDvGcZH4QTiRIM+wD5HIiEQ3oT</HostId><Key>codeTemplate_go/ListBuckets.go</Key></Error>
+2020-06-10 20:25:24 208|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 20:25:23|2020-06-10 20:25:24|||404|
+
+main|INFO |2020-06-10 20:26:58 242|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 20:27:08 677|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 20:27:09 041|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 20:27:09 395|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_python%2FListBuckets.py' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 12:27:09 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E32CEBEB812DF2C597E6BCE</RequestId><HostId>75So8LGZ+uVQu7Hq1eylY0URx1m5q4alkhDXulkDvGcZH4QTiRIM+wD5HIiEQ3oT</HostId><Key>codeTemplate_python/ListBuckets.py</Key></Error>
+2020-06-10 20:27:09 397|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 20:27:09|2020-06-10 20:27:09|||404|
+
+AWT-EventQueue-0|INFO |2020-06-10 20:27:09 398|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 20:27:09 756|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_go%2FListBuckets.go' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 12:27:09 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E32D01DB81566A76C56CBC7</RequestId><HostId>55jQPtp8tB1UsCcugCWCO/aysKBsrw4ZpFf7eMJJhAaPnm+z3Knv23nEGPtfIB70</HostId><Key>codeTemplate_go/ListBuckets.go</Key></Error>
+2020-06-10 20:27:09 757|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 20:27:09|2020-06-10 20:27:09|||404|
+
+main|INFO |2020-06-10 20:28:52 621|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 20:29:01 040|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 20:29:01 433|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 20:29:01 779|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_python%2FListBuckets.py' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 12:29:01 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E3485B9B823BAEB7E547677</RequestId><HostId>cRE6/q3qh+OVISHBT95LmtYqJ74G6dsiazSFLtTrOo8Ms+bpK/7D3t23Uj//TBh3</HostId><Key>codeTemplate_python/ListBuckets.py</Key></Error>
+2020-06-10 20:29:01 783|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 20:29:01|2020-06-10 20:29:01|||404|
+
+AWT-EventQueue-0|INFO |2020-06-10 20:29:01 785|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 20:29:02 164|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_go%2FListBuckets.go' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 12:29:02 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E348725B81F67C0CDCE9CEC</RequestId><HostId>sAxGqsYjP9uJVZGo02aMznHll/K16YXmC5TgqA/yDloDXHAWKeXNFtJyav2aASuy</HostId><Key>codeTemplate_go/ListBuckets.go</Key></Error>
+2020-06-10 20:29:02 166|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 20:29:01|2020-06-10 20:29:02|||404|
+
+main|INFO |2020-06-10 20:29:39 352|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 20:30:23 035|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 20:30:23 808|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 20:30:24 127|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_python%2FListBuckets.py' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 12:30:24 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E35C76CB81EA11087043C6A</RequestId><HostId>z5mGxMiwOZEGZxZ2Bnsdj+SmoSe5lKAKnIfrGQw33esm7ISf3rd6AqgTT4y/nSN1</HostId><Key>codeTemplate_python/ListBuckets.py</Key></Error>
+2020-06-10 20:30:24 128|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 20:30:23|2020-06-10 20:30:24|||404|
+
+AWT-EventQueue-0|INFO |2020-06-10 20:30:24 129|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 20:30:24 529|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_go%2FListBuckets.go' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 12:30:24 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E35C8DBB819FA26116D24BE</RequestId><HostId>/fatBvIyrTz1203U4OvSiamIx/Zla1w254qoURKonGGfB0eNK4tO4X0ESAQkM47A</HostId><Key>codeTemplate_go/ListBuckets.go</Key></Error>
+2020-06-10 20:30:24 531|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 20:30:24|2020-06-10 20:30:24|||404|
+
+main|INFO |2020-06-10 20:31:14 574|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 20:32:09 234|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+AWT-EventQueue-0|INFO |2020-06-10 20:32:09 893|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 20:32:10 281|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_python%2FListBuckets.py' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 12:32:10 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E3765F6B0106B2F0D8263A3</RequestId><HostId>1NogC5cAK5GhGic2+F4xUE+duzpyJm7HfexRx4x4liEcWOvUU0+ohCc/XjxbLfG/</HostId><Key>codeTemplate_python/ListBuckets.py</Key></Error>
+2020-06-10 20:32:10 285|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 20:32:09|2020-06-10 20:32:10|||404|
+
+AWT-EventQueue-0|INFO |2020-06-10 20:32:10 288|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+2020-06-10 20:32:10 630|com.obs.services.internal.RestStorageService|handleThrowable|245|com.obs.services.internal.ServiceException: Request Error. GET 'https://explorer.obs.cn-southwest-2.myhuaweicloud.com/codeTemplate_go%2FListBuckets.go' on Host 'explorer.obs.cn-southwest-2.myhuaweicloud.com' @ 'Wed, 10 Jun 2020 12:32:10 GMT' -- ResponseCode: 404, ResponseStatus: Not Found, XML Error Message: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>000001729E376772B01F618C46F4732D</RequestId><HostId>YHgdA0+qqjrQJXBR+8S814vKZxw0WPC45CEI75XbzX27duylt+XIvQ3kOLVvJjgL</HostId><Key>codeTemplate_go/ListBuckets.go</Key></Error>
+2020-06-10 20:32:10 632|com.obs.services.ObsClient|doActionWithResult|2792|Storage|1|HTTP+XML|getObject||||2020-06-10 20:32:10|2020-06-10 20:32:10|||404|
+
+main|INFO |2020-06-10 20:32:46 570|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+
+main|INFO |2020-06-10 20:32:47 186|com.obs.services.ObsClient|init|88|[OBS SDK Version=3.19.11.1];[Endpoint=https://obs.cn-southwest-2.myhuaweicloud.com:443/];[Access Mode=Virtul Hosting]
+

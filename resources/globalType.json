@@ -1,0 +1,77 @@
+{
+  "globalCategory": [
+    {
+      "管理桶": [
+        "创建桶",
+        "列举桶",
+        "删除桶",
+        "判断桶是否存在",
+        "获取桶元数据"
+      ]
+    },
+    {
+      "管理并行文件系统": [
+        "创建并行文件系统",
+        "列举并行文件系统",
+        "修改写对象",
+        "重命名对象",
+        "截取对象"
+      ]
+    },
+    {
+      "上传对象": [
+        "流式上传",
+        "文件上传",
+        "获取文件上传进度",
+        "创建文件夹",
+        "设置对象属性"
+      ]
+    },
+    {
+      "下载对象": [
+        "流式下载",
+        "范围下载",
+        "获取下载进度",
+        "限定条件下载"
+      ]
+    },
+    {
+      "管理对象": [
+        "获取对象属性",
+        "管理对象访问权限",
+        "列举对象",
+        "删除对象",
+        "赋值对象"
+      ]
+    }
+  ],
+  "templateFilePath_Java": {
+    "创建桶": "codeTemplate_java/CreateBucket.java",
+    "列举桶": "codeTemplate_java/ListBuckets.java"
+  },
+  "templateFilePath_Python": {
+    "创建桶": "codeTemplate_python/CreateBucket.py",
+    "列举桶": "codeTemplate_python/ListBuckets.py"
+  },
+  "templateFilePath_Go": {
+    "创建桶": "codeTemplate_go/CreateBucket.go",
+    "列举桶": "codeTemplate_go/ListBuckets.go"
+  },
+  "parameter": {
+    "创建桶": [
+      "endPoint",
+      "ak",
+      "sk",
+      "bucketname"
+    ],
+    "列举桶": [
+      "endPoint",
+      "ak",
+      "sk"
+    ]
+  },
+  "referenceWebsite": {
+    "创建桶": "https://support.huaweicloud.com/sdk-java-devg-obs/obs_21_0401.html",
+    "列举桶": "https://support.huaweicloud.com/sdk-java-devg-obs/obs_21_0402.html"
+  }
+}
