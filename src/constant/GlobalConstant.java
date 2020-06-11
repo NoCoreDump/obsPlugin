@@ -1,5 +1,6 @@
 package constant;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class GlobalConstant {
@@ -15,12 +16,11 @@ public class GlobalConstant {
     //全局配置的Map
     public static Map<String,Object> globalMap;
     //操作类型Map
-    public static Map<String, Object> categoryMap;
+    public static Map<String, Object> categoryMap = new HashMap<>();
     //参数Map
-    public static Map<String, Object> parametersMap;
+    public static Map<String, Object> parametersMap = new HashMap<>();
     //操作大类
-//    public static String[] BIG_TYPE;
-    public static Object[] BIG_TYPE1;
+    public static String[] BIG_TYPE;
     //生成文件下拉选择项
     public static String[] LANGE_TYPE = {"不生成文件", "java", "python", "js", "go"};
     public static final String PYTHON = "python";

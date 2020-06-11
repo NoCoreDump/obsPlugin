@@ -24,7 +24,6 @@ public class CodeGenerator extends AnAction {
         //从OBS上拉取全局配置信息
         globalMap  = getMapContentFromOBS(bucket_global,typeFile);
         /*********** 操作类型map ***************/
-        categoryMap = new HashMap<>();
         JSONArray jsonArray = (JSONArray) globalMap.get("globalCategory");
         for (int i = 0; i < jsonArray.size(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -34,13 +33,10 @@ public class CodeGenerator extends AnAction {
         }
 
         //BIG_TYPE
-//        BIG_TYPE = new String[categoryMap.size()];
-//        categoryMap.keySet().toArray(BIG_TYPE);
-        BIG_TYPE1 = categoryMap.keySet().toArray();
-//        System.out.println(Arrays.toString(BIG_TYPE));
+        BIG_TYPE = new String[categoryMap.size()];
+        categoryMap.keySet().toArray(BIG_TYPE);
 
         //parametersMap
-        parametersMap = new HashMap<>();
         parametersMap = (Map<String, Object>) JSON.parse(globalMap.get("parameter").toString());
 
     }

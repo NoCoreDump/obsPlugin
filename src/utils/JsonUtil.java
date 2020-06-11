@@ -23,8 +23,13 @@ public class JsonUtil {
 
     public static String[] getParamsList(Map<String, Object> map, String key) {
         JSONArray js = (JSONArray) map.get(key);
-        String[] paramsList = new String[js.size()];
-        js.toArray(paramsList);
+        String[] paramsList;
+        if (js != null) {
+            paramsList = new String[js.size()];
+            js.toArray(paramsList);
+        } else {
+            paramsList = null;
+        }
         return paramsList;
     }
 }

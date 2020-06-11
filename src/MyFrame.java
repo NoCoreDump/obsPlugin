@@ -39,21 +39,6 @@ public class MyFrame implements SwingConstants{
     private JComboBox smallType;
     private JTabbedPane middle;
     private JPanel mid;
-
-    private JTabbedPane akPane;
-    private JTextField akField;
-    private JTabbedPane skPane;
-    private JTextField skField;
-    private JTabbedPane endpointPane;
-    private JTextField endpointField;
-    private JTabbedPane regionPane;
-    private JTextField regionField;
-    private JTabbedPane bucketPane;
-    private JTextField bucketField;
-    private JTabbedPane localpathPane;
-    private JTextField localpathField;
-    private JTabbedPane dstpatPane;
-    private JTextField dstpathField;
     private JPanel vSpacer1;
     private JButton buttonOK;
 
@@ -83,7 +68,6 @@ public class MyFrame implements SwingConstants{
     private String selectedSubType;
     private int languageTypeIndex;
     private String[] subTypeList;
-    private String[] BIG_TYPE;
     public MyFrame() {
         init();
         placePanel();
@@ -91,15 +75,11 @@ public class MyFrame implements SwingConstants{
 
     public void init() {
         frame = new JFrame("obs");
-        /******************** map初始化 *********************/
-        BIG_TYPE = new String[BIG_TYPE1.length];
-        for (int i = 0; i < BIG_TYPE.length; i++) {
-            BIG_TYPE[i] = BIG_TYPE1[i].toString();
-        }
 
         //初始化小类
         subTypeList = getSubTypeList(categoryMap, BIG_TYPE[0]);
-
+        selectedSubType = subTypeList[0];
+        System.out.println(selectedSubType);
         /******************************************************************/
         panel1 = new JPanel();
         panel2 = new JPanel();
@@ -115,20 +95,7 @@ public class MyFrame implements SwingConstants{
         //mid
         middle = new JTabbedPane();
         mid = new JPanel();
-        akPane = new JTabbedPane();
-        akField = new JTextField();
-        skPane = new JTabbedPane();
-        skField = new JTextField();
-        endpointPane = new JTabbedPane();
-        endpointField = new JTextField();
-        regionPane = new JTabbedPane();
-        regionField = new JTextField();
-        bucketPane = new JTabbedPane();
-        bucketField = new JTextField();
-        localpathPane = new JTabbedPane();
-        localpathField = new JTextField();
-        dstpatPane = new JTabbedPane();
-        dstpathField = new JTextField();
+
         vSpacer1 = new JPanel(null);
         buttonOK = new JButton();
 
@@ -215,6 +182,7 @@ public class MyFrame implements SwingConstants{
                         smallType.addItemListener(e->{
                             if (e.getStateChange() == ItemEvent.SELECTED) {
                                 selectedSubType = (String)smallType.getSelectedItem();
+                                updateParamPanes();
                             }
                         });
                         smallType.setMinimumSize(new Dimension(99, 15));
@@ -235,115 +203,7 @@ public class MyFrame implements SwingConstants{
                 {
                     mid.setLayout(new VerticalLayout());
 
-                    //======== akPane ========
-                    {
-
-                        //---- akField ----
-                        akField.setPreferredSize(new Dimension(49, 40));
-                        akPane.addTab("ak", akField);
-                    }
-                    mid.add(akPane);
-
-                    //======== skPane ========
-                    {
-
-                        //---- skField ----
-                        skField.setPreferredSize(new Dimension(49, 40));
-                        skPane.addTab("sk", skField);
-                    }
-                    mid.add(skPane);
-
-                    //======== endpointPane ========
-                    {
-
-                        //---- endpointField ----
-                        endpointField.setPreferredSize(new Dimension(49, 40));
-                        endpointPane.addTab("endpoint", endpointField);
-                    }
-                    mid.add(endpointPane);
-
-                    //======== regionPane ========
-                    {
-
-                        //---- regionField ----
-                        regionField.setPreferredSize(new Dimension(49, 40));
-                        regionPane.addTab("\u533a\u57df", regionField);
-                    }
-                    mid.add(regionPane);
-
-                    //======== bucketPane ========
-                    {
-
-                        //---- bucketField ----
-                        bucketField.setMinimumSize(new Dimension(49, 40));
-                        bucketField.setPreferredSize(new Dimension(49, 40));
-                        bucketPane.addTab("\u6876\u540d", bucketField);
-                    }
-                    mid.add(bucketPane);
-
-                    //======== localpathPane ========
-                    {
-
-                        //---- localpathField ----
-                        localpathField.setMinimumSize(new Dimension(49, 40));
-                        localpathField.setPreferredSize(new Dimension(49, 40));
-                        localpathPane.addTab("\u672c\u5730\u6587\u4ef6\u8def\u5f84", localpathField);
-                    }
-                    mid.add(localpathPane);
-
-                    //======== dstpatPane ========
-                    {
-
-                        //---- dstpathField ----
-                        dstpathField.setMinimumSize(new Dimension(49, 40));
-                        dstpathField.setPreferredSize(new Dimension(49, 40));
-                        dstpatPane.addTab("\u76ee\u6807\u8def\u5f84", dstpathField);
-                    }
-                    mid.add(dstpatPane);
-
-                    //======== languageTypePane ========
-                    {
-                        //============= languageBox ========
-                        languageBox.addItemListener(e -> {
-                            if (e.getStateChange() == ItemEvent.SELECTED) {
-                                languageTypeIndex = languageBox.getSelectedIndex();
-                            }
-                        });
-                        languageBox.setMinimumSize(new Dimension(30, 40));
-                        languageBox.setPreferredSize(new Dimension(30, 40));
-                        languageTypePane.addTab("要生成的示例代码类型", languageBox);
-                    }
-                    mid.add(languageTypePane);
-
-                    //---- vSpacer1 ----
-                    vSpacer1.setPreferredSize(new Dimension(10, 30));
-                    mid.add(vSpacer1);
-
-                    //---- buttonOK ----
-                    buttonOK.setText("generate");
-                    buttonOK.setAlignmentY(1.0F);
-                    buttonOK.setAlignmentX(0.5F);
-                    buttonOK.setMargin(new Insets(2, 2, 0, 0));
-                    buttonOK.setPreferredSize(new Dimension(78, 40));
-                    buttonOK.addActionListener(e-> {
-                        javaCodeArea.setText("");
-                        pythonCodeArea.setText("");
-                        jsCodeArea.setText("");
-                        goCodeArea.setText("");
-                        generateCode();
-                        if (languageTypeIndex != 0) {
-                            String filePath = "";
-                            JFileChooser fileChooser = new JFileChooser("D:\\");
-                            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                            int returnVal = fileChooser.showOpenDialog(fileChooser);
-                            if(returnVal == JFileChooser.APPROVE_OPTION) {
-                                filePath= fileChooser.getSelectedFile().getAbsolutePath();
-                            }
-                            generateFile(filePath, languageBox.getSelectedItem().toString());
-                        }
-                        generateReferenct();
-                    });
-                    mid.add(buttonOK);
+                    updateParamPanes();
                 }
                 middle.addTab("\u5173\u952e\u53c2\u6570", mid);
             }
@@ -447,18 +307,16 @@ public class MyFrame implements SwingConstants{
         frame.setVisible(true);
     }
 
-    private void generateCode() {
+    private void generateCode(JTextField[] paramsTextFields) {
+        if (paramsTextFields == null || paramsTextFields.length == 0) return;
         CodeGenerateServiceImpl codeGenerateService =new CodeGenerateServiceImpl();
         Map<String, String> params = new HashMap<>();
         String[] paramsList = getParamsList(parametersMap, selectedSubType);
-        System.out.println("paramList: " + Arrays.toString(paramsList));
-        for (String s : paramsList) {
-            switch(s) {
-                case AK: params.put(s, akField.getText()); break;
-                case SK: params.put(s, skField.getText()); break;
-                case ENDPOINT: params.put(s, endpointField.getText()); break;
-                case BUCKET_NAME: params.put(s, bucketField.getText()); break;
-            }
+//        System.out.println("paramList: " + Arrays.toString(paramsList));
+        for (int i = 0; i < paramsList.length; i++) {
+            String s = paramsList[i];
+            params.put(s, paramsTextFields[i].getText());
+
         }
 
         try {
@@ -529,6 +387,67 @@ public class MyFrame implements SwingConstants{
         Map<String, Object> referenceMap = (Map<String, Object>) JSON.parse(globalMap.get("referenceWebsite").toString());
         String referenceUrl = (String)referenceMap.get(selectedSubType);
         docTextArea.append(referenceUrl);
+    }
+
+    private void updateParamPanes() {
+        String[] paramsList = getParamsList(parametersMap, selectedSubType);
+        JTabbedPane[] paramsPane;
+        JTextField[] paramsTextFields;
+        if (paramsList != null && paramsList.length > 0) {
+            int len = paramsList.length;
+            paramsPane = new JTabbedPane[len];
+            paramsTextFields = new JTextField[len];
+            System.out.println("paramList: " + Arrays.toString(paramsList));
+            for (int i = 0; i < len; i++) {
+                paramsTextFields[i].setPreferredSize(new Dimension(49, 40));
+                paramsPane[i].addTab(paramsList[i], paramsTextFields[i]);
+                mid.add(paramsPane[i]);
+            }
+        } else {
+            paramsTextFields = null;
+        }
+
+        //============= languageBox ========
+        languageBox.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                languageTypeIndex = languageBox.getSelectedIndex();
+            }
+        });
+        languageBox.setMinimumSize(new Dimension(30, 40));
+        languageBox.setPreferredSize(new Dimension(30, 40));
+        languageTypePane.addTab("要生成的示例代码类型", languageBox);
+
+        mid.add(languageTypePane);
+
+        //---- vSpacer1 ----
+        vSpacer1.setPreferredSize(new Dimension(10, 30));
+        mid.add(vSpacer1);
+
+        //---- buttonOK ----
+        buttonOK.setText("generate");
+        buttonOK.setAlignmentY(1.0F);
+        buttonOK.setAlignmentX(0.5F);
+        buttonOK.setMargin(new Insets(2, 2, 0, 0));
+        buttonOK.setPreferredSize(new Dimension(78, 40));
+        buttonOK.addActionListener(e-> {
+            javaCodeArea.setText("");
+            pythonCodeArea.setText("");
+            jsCodeArea.setText("");
+            goCodeArea.setText("");
+            generateCode(paramsTextFields);
+            if (languageTypeIndex != 0) {
+                String filePath = "";
+                JFileChooser fileChooser = new JFileChooser("D:\\");
+                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                int returnVal = fileChooser.showOpenDialog(fileChooser);
+                if(returnVal == JFileChooser.APPROVE_OPTION) {
+                    filePath= fileChooser.getSelectedFile().getAbsolutePath();
+                }
+                generateFile(filePath, languageBox.getSelectedItem().toString());
+            }
+            generateReferenct();
+        });
+        mid.add(buttonOK);
     }
 
     public static void main(String[] args) {
