@@ -39,14 +39,20 @@ public class MyFrame implements SwingConstants{
     private JComboBox smallType;
     private JTabbedPane middle;
     private JPanel mid;
+    private JPanel prmsPanel;
+    private JTabbedPane languageTypePane;
+    private JComboBox languageBox;
     private JPanel vSpacer1;
     private JButton buttonOK;
+    private JButton buttonRun;
 
     private JTabbedPane right;
     private JTabbedPane examplePane;
     private JTabbedPane javaPane;
     private JScrollPane javaScrollPane;
     private JTextArea javaCodeArea;
+    private JScrollPane javaDisplayPane;
+    private JTextArea javaRunArea;
     private JTabbedPane pythonPane;
     private JScrollPane pythonScrollPane;
     private JTextArea pythonCodeArea;
@@ -59,24 +65,35 @@ public class MyFrame implements SwingConstants{
     private JTabbedPane documentPane;
     private JScrollPane docScrollPane;
     private JTextArea docTextArea;
-    private JTabbedPane languageTypePane;
-    private JComboBox languageBox;
+
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     /************* 自定义变量 ******************/
     private JFrame frame;
     private String selectedSubType;
     private int languageTypeIndex;
-    private String[] subTypeList;
+    private String[] paramsList;
+    private JTabbedPane[] paramsPane;
+    private JTextField[] paramsTextFields;
+    private int osType;
+    private String generatedFilePath;
+
     public MyFrame() {
         init();
         placePanel();
     }
 
     public void init() {
+        String osName = System.getProperties().getProperty("os.name");
+        if (LINUX.equals(osName)) {
+            osType = 0;
+        } else {
+            osType = 1;
+        }
         frame = new JFrame("obs");
 
         //初始化小类
+        String[] subTypeList;
         subTypeList = getSubTypeList(categoryMap, BIG_TYPE[0]);
         selectedSubType = subTypeList[0];
         System.out.println(selectedSubType);
@@ -95,16 +112,20 @@ public class MyFrame implements SwingConstants{
         //mid
         middle = new JTabbedPane();
         mid = new JPanel();
-
+        prmsPanel = new JPanel();
+        languageTypePane = new JTabbedPane();
+        languageBox = new JComboBox(LANGE_TYPE);
         vSpacer1 = new JPanel(null);
         buttonOK = new JButton();
-
+        buttonRun = new JButton();
         //right
         right = new JTabbedPane();
         examplePane = new JTabbedPane();
         javaPane = new JTabbedPane();
         javaScrollPane = new JScrollPane();
         javaCodeArea = new JTextArea();
+        javaDisplayPane = new JScrollPane();
+        javaRunArea = new JTextArea();
         pythonPane = new JTabbedPane();
         pythonScrollPane = new JScrollPane();
         pythonCodeArea = new JTextArea();
@@ -117,8 +138,7 @@ public class MyFrame implements SwingConstants{
         documentPane = new JTabbedPane();
         docScrollPane = new JScrollPane();
         docTextArea = new JTextArea();
-        languageTypePane = new JTabbedPane();
-        languageBox = new JComboBox(LANGE_TYPE);
+
     }
     public void placePanel(){
         int xSize = 1100;
@@ -162,11 +182,14 @@ public class MyFrame implements SwingConstants{
                         bigType.addItemListener(e -> {
                             if (e.getStateChange() == ItemEvent.SELECTED) {
                                 String selectedBigType = (String) bigType.getSelectedItem();
-                                smallType.removeAllItems();
+
                                 String[] items = getSubTypeList(categoryMap, selectedBigType);
+                                System.out.println("subtype : " + Arrays.toString(items));
+                                smallType.removeAllItems();
                                 for (String item : items) {
                                     smallType.addItem(item);
                                 }
+                                selectedSubType = items[0];
                             }
                         });
                         bigType.setMinimumSize(new Dimension(30, 15));
@@ -202,8 +225,67 @@ public class MyFrame implements SwingConstants{
                 //======== mid ========
                 {
                     mid.setLayout(new VerticalLayout());
-
+                    prmsPanel.setLayout(new VerticalLayout());
                     updateParamPanes();
+                    mid.add(prmsPanel);
+                    //============= languageBox ========
+                    languageBox.addItemListener(e -> {
+                        if (e.getStateChange() == ItemEvent.SELECTED) {
+                            languageTypeIndex = languageBox.getSelectedIndex();
+                        }
+                    });
+                    languageBox.setMinimumSize(new Dimension(30, 40));
+                    languageBox.setPreferredSize(new Dimension(30, 40));
+                    languageTypePane.addTab("要生成的示例代码类型", languageBox);
+
+                    mid.add(languageTypePane);
+
+                    //---- vSpacer1 ----
+                    vSpacer1.setPreferredSize(new Dimension(10, 30));
+                    mid.add(vSpacer1);
+
+                    //---- buttonOK ----
+                    buttonOK.setText("generate");
+                    buttonOK.setAlignmentY(1.0F);
+                    buttonOK.setAlignmentX(0.5F);
+                    buttonOK.setMargin(new Insets(2, 2, 0, 0));
+                    buttonOK.setPreferredSize(new Dimension(78, 40));
+                    buttonOK.addActionListener(e-> {
+                        javaCodeArea.setText("");
+                        pythonCodeArea.setText("");
+                        jsCodeArea.setText("");
+                        goCodeArea.setText("");
+                        generateCode(paramsTextFields, paramsList);
+                        if (languageTypeIndex != 0) {
+                            String filePath = "";
+                            JFileChooser fileChooser;
+                            String defaultPath = (osType == 0) ? LINUX_PATH : WIN_PATH;
+                            fileChooser = new JFileChooser(defaultPath);
+                            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                            int returnVal = fileChooser.showOpenDialog(fileChooser);
+                            if(returnVal == JFileChooser.APPROVE_OPTION) {
+                                filePath= fileChooser.getSelectedFile().getAbsolutePath();
+                            }
+                            generatedFilePath = generateFile(filePath, languageBox.getSelectedItem().toString());
+                        }
+                        generateReferenct();
+                    });
+                    mid.add(buttonOK);
+
+                    //---- buttonRun ----
+                    buttonRun.setText("RUN");
+                    buttonRun.setAlignmentY(1.0F);
+                    buttonRun.setAlignmentX(0.5F);
+                    buttonRun.setMargin(new Insets(2, 2, 0, 0));
+                    buttonRun.setPreferredSize(new Dimension(78, 40));
+                    buttonRun.addActionListener(e -> {
+                        if (generatedFilePath != null && generatedFilePath.length() != 0) {
+//                            runProject(generatedFilePath);
+                        } else {
+                            System.out.println("run error!");
+                        }
+                    });
+                    mid.add(buttonRun);
                 }
                 middle.addTab("\u5173\u952e\u53c2\u6570", mid);
             }
@@ -221,7 +303,10 @@ public class MyFrame implements SwingConstants{
                         {
                             javaScrollPane.setViewportView(javaCodeArea);
                         }
-                        javaPane.addTab("", javaScrollPane);
+                        javaPane.setLayout(new VerticalLayout());
+                        javaPane.add(javaScrollPane);
+//                        javaDisplayPane.setViewportView(javaRunArea);
+//                        javaPane.add(javaDisplayPane);
                     }
                     examplePane.addTab("java", javaPane);
 
@@ -307,11 +392,12 @@ public class MyFrame implements SwingConstants{
         frame.setVisible(true);
     }
 
-    private void generateCode(JTextField[] paramsTextFields) {
-        if (paramsTextFields == null || paramsTextFields.length == 0) return;
+    private void generateCode(JTextField[] paramsTextFields, String[] paramsList) {
+        if (paramsTextFields == null || paramsTextFields.length == 0) {
+            return;
+        }
         CodeGenerateServiceImpl codeGenerateService =new CodeGenerateServiceImpl();
         Map<String, String> params = new HashMap<>();
-        String[] paramsList = getParamsList(parametersMap, selectedSubType);
 //        System.out.println("paramList: " + Arrays.toString(paramsList));
         for (int i = 0; i < paramsList.length; i++) {
             String s = paramsList[i];
@@ -353,7 +439,7 @@ public class MyFrame implements SwingConstants{
      * @Param []
      * @return void
      **/
-    private void generateFile(String path, String fileType) {
+    private String generateFile(String path, String fileType) {
         String code = "";
         String tmpFilePath = "templateFilePath_";
         switch(fileType) {
@@ -367,7 +453,14 @@ public class MyFrame implements SwingConstants{
         int x = fileName.indexOf('/');
         fileName = fileName.substring(x+1);
         try {
-            File file = new File(path + "\\" + fileName);
+            //区分Windows和Linux
+            if (osType == 0) {
+                path = path + "/" + fileName;
+            } else {
+                path = path + "\\" + fileName;
+            }
+
+            File file = new File(path);
             if (!file.exists()) {
                 file.createNewFile();
             }
@@ -377,10 +470,12 @@ public class MyFrame implements SwingConstants{
             bufferedWriter.write(code);
             bufferedWriter.newLine();
             bufferedWriter.close();
-            System.out.println(path + fileName + "文件已生成");
+            System.out.println(path + "文件已生成");
+            return path;
         } catch (IOException e) {
             System.out.println("Fail: create file!");
         }
+        return "";
     }
 
     private void generateReferenct() {
@@ -390,64 +485,25 @@ public class MyFrame implements SwingConstants{
     }
 
     private void updateParamPanes() {
-        String[] paramsList = getParamsList(parametersMap, selectedSubType);
-        JTabbedPane[] paramsPane;
-        JTextField[] paramsTextFields;
+        prmsPanel.removeAll();
+        paramsList = getParamsList(parametersMap, selectedSubType);
         if (paramsList != null && paramsList.length > 0) {
             int len = paramsList.length;
             paramsPane = new JTabbedPane[len];
             paramsTextFields = new JTextField[len];
             System.out.println("paramList: " + Arrays.toString(paramsList));
             for (int i = 0; i < len; i++) {
+                paramsPane[i] = new JTabbedPane();
+                paramsTextFields[i] = new JTextField();
                 paramsTextFields[i].setPreferredSize(new Dimension(49, 40));
                 paramsPane[i].addTab(paramsList[i], paramsTextFields[i]);
-                mid.add(paramsPane[i]);
+                prmsPanel.add(paramsPane[i]);
             }
         } else {
             paramsTextFields = null;
         }
 
-        //============= languageBox ========
-        languageBox.addItemListener(e -> {
-            if (e.getStateChange() == ItemEvent.SELECTED) {
-                languageTypeIndex = languageBox.getSelectedIndex();
-            }
-        });
-        languageBox.setMinimumSize(new Dimension(30, 40));
-        languageBox.setPreferredSize(new Dimension(30, 40));
-        languageTypePane.addTab("要生成的示例代码类型", languageBox);
-
-        mid.add(languageTypePane);
-
-        //---- vSpacer1 ----
-        vSpacer1.setPreferredSize(new Dimension(10, 30));
-        mid.add(vSpacer1);
-
-        //---- buttonOK ----
-        buttonOK.setText("generate");
-        buttonOK.setAlignmentY(1.0F);
-        buttonOK.setAlignmentX(0.5F);
-        buttonOK.setMargin(new Insets(2, 2, 0, 0));
-        buttonOK.setPreferredSize(new Dimension(78, 40));
-        buttonOK.addActionListener(e-> {
-            javaCodeArea.setText("");
-            pythonCodeArea.setText("");
-            jsCodeArea.setText("");
-            goCodeArea.setText("");
-            generateCode(paramsTextFields);
-            if (languageTypeIndex != 0) {
-                String filePath = "";
-                JFileChooser fileChooser = new JFileChooser("D:\\");
-                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                int returnVal = fileChooser.showOpenDialog(fileChooser);
-                if(returnVal == JFileChooser.APPROVE_OPTION) {
-                    filePath= fileChooser.getSelectedFile().getAbsolutePath();
-                }
-                generateFile(filePath, languageBox.getSelectedItem().toString());
-            }
-            generateReferenct();
-        });
-        mid.add(buttonOK);
+        
     }
 
     public static void main(String[] args) {

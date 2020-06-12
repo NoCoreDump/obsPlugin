@@ -33,4 +33,10 @@ public class GlobalConstant {
     public static final String ENDPOINT = "endPoint";
     public static final String REGION = "region";
     public static final String BUCKET_NAME = "bucketName";
+    /*****************OS name **************/
+    public static final String LINUX = "Linux";
+    public static final String WINDOWS = "Windows";
+    /*****************default JFileChooser path**********/
+    public static final String LINUX_PATH = "/home/";
+    public static final String WIN_PATH = "D:\\";
 }
