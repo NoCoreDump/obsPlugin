@@ -39,6 +39,12 @@ public class MyFrame implements SwingConstants{
     private JComboBox smallType;
     private JTabbedPane middle;
     private JPanel mid;
+    private JTabbedPane akPane;
+    private JTextField akField;
+    private JTabbedPane skPane;
+    private JTextField skField;
+    private JTabbedPane endpointPane;
+    private JTextField endpointField;
     private JPanel prmsPanel;
     private JPanel vSpacer1;
     private JButton buttonOK;
@@ -126,6 +132,12 @@ public class MyFrame implements SwingConstants{
         //mid
         middle = new JTabbedPane();
         mid = new JPanel();
+        akPane = new JTabbedPane();
+        akField = new JTextField();
+        skPane = new JTabbedPane();
+        skField = new JTextField();
+        endpointPane = new JTabbedPane();
+        endpointField = new JTextField();
         prmsPanel = new JPanel();
         languageTypePane = new JTabbedPane();
         languageBox = new JComboBox(LANGE_TYPE);
@@ -204,6 +216,7 @@ public class MyFrame implements SwingConstants{
                                     smallType.addItem(item);
                                 }
                                 selectedSubType = items[0];
+                                updateParamPanes();
                             }
                         });
                         bigType.setMinimumSize(new Dimension(30, 15));
@@ -239,6 +252,32 @@ public class MyFrame implements SwingConstants{
                 //======== mid ========
                 {
                     mid.setLayout(new VerticalLayout());
+                    //======== akPane ========
+                    {
+
+                        //---- akField ----
+                        akField.setPreferredSize(new Dimension(49, 40));
+                        akPane.addTab("ak", akField);
+                    }
+                    mid.add(akPane);
+
+                    //======== skPane ========
+                    {
+
+                        //---- skField ----
+                        skField.setPreferredSize(new Dimension(49, 40));
+                        skPane.addTab("sk", skField);
+                    }
+                    mid.add(skPane);
+
+                    //======== endpointPane ========
+                    {
+
+                        //---- endpointField ----
+                        endpointField.setPreferredSize(new Dimension(49, 40));
+                        endpointPane.addTab("endPoint", endpointField);
+                    }
+                    mid.add(endpointPane);
                     prmsPanel.setLayout(new VerticalLayout());
                     updateParamPanes();
                     mid.add(prmsPanel);
@@ -281,7 +320,7 @@ public class MyFrame implements SwingConstants{
                     buttonRun.setMargin(new Insets(2, 2, 0, 0));
                     buttonRun.setPreferredSize(new Dimension(78, 40));
                     buttonRun.addActionListener(e -> {
-                        runResultTextArea.removeAll();
+                        runResultTextArea.setText("");
                         if (languageTypeIndex != 0) {
                             String filePath;
                             JFileChooser fileChooser;
@@ -421,7 +460,6 @@ public class MyFrame implements SwingConstants{
      */
     private void runFile(String pomPath, String fileType, String apiName) {
         apiName = apiName.substring(0, apiName.indexOf(".java"));
-        runResultTextArea.removeAll();
         ProjectGenerateService projectGenerateService = new ProjectGenerateServiceImpl();
         File file = new File(pomPath);
         if(!file.exists()){
@@ -442,16 +480,20 @@ public class MyFrame implements SwingConstants{
     }
 
     private void generateCode(JTextField[] paramsTextFields, String[] paramsList) {
-        if (paramsTextFields == null || paramsTextFields.length == 0) return;
+//        if (paramsTextFields == null || paramsTextFields.length == 0) return;
         CodeGenerateServiceImpl codeGenerateService =new CodeGenerateServiceImpl();
         Map<String, String> params = new HashMap<>();
-//        System.out.println("paramList: " + Arrays.toString(paramsList));
-        for (int i = 0; i < paramsList.length; i++) {
-            String s = paramsList[i];
-            params.put(s, paramsTextFields[i].getText());
+        params.put(AK, akField.getText());
+        params.put(SK, skField.getText());
+        params.put(ENDPOINT, endpointField.getText());
+        if (paramsList != null && paramsTextFields != null) {
+            System.out.println("paramList: " + Arrays.toString(paramsList));
+            for (int i = 0; i < paramsList.length; i++) {
+                String s = paramsList[i];
+                params.put(s, paramsTextFields[i].getText());
 
+            }
         }
-
         try {
             javaCodeArea.append(codeGenerateService.getCodeStr(selectedSubType, params, JAVA));
         } catch (Exception e) {

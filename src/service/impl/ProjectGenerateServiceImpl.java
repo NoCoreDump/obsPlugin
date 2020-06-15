@@ -1,15 +1,21 @@
 package service.impl;
+import com.obs.services.ObsClient;
+import com.obs.services.model.ObsObject;
 import service.ProjectGenerateService;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
+import static constant.GlobalConstant.*;
 import static utils.FileUtil.readFileContent;
 import static utils.FileUtil.writeFileContent;
 import static utils.RunUtil.buildProject;
 import static utils.RunUtil.runFile;
 
 public class ProjectGenerateServiceImpl implements ProjectGenerateService {
-    @Override
+    /*@Override
     public  void pomFileGenerate(String pomPath) {
         StringBuilder pomContent = readFileContent(pomPath);
         //插入编译版本
@@ -51,6 +57,29 @@ public class ProjectGenerateServiceImpl implements ProjectGenerateService {
 
         }
         writeFileContent(pomPath,pomContent.toString());
+    }*/
+
+    @Override
+    public void pomFileGenerate(String pomPath) {
+        // 创建ObsClient实例
+        final ObsClient obsClient = new ObsClient(ak_global, sk_global, endPoint_global);
+        ObsObject obsObject = obsClient.getObject(bucket_global, "projectTemplate_java/pom.xml");
+        // 读取对象内容
+        System.out.println("Object content:");
+        InputStream input = obsObject.getObjectContent();
+        byte[] b = new byte[1024 * 1024];
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        int len;
+        try {
+            while ((len = input.read(b)) != -1) {
+                bos.write(b, 0, len);
+            }
+            bos.close();
+            input.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        writeFileContent(pomPath,new String(bos.toByteArray()));
     }
 
     @Override

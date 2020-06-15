@@ -1,8 +1,8 @@
 <idea-plugin>
   <id>com.MyPlugin</id>
   <name>OBS-explorer</name>
-  <version>2.0</version>
-  <vendor email="sunwb_mai@163.co," ></vendor>
+  <version>1.0</version>
+  <vendor email="sunwb_mai@163.com" ></vendor>
 
   <description>这是一个华为OBS插件项目，基于InteliJ IDEA开发的插件。课题来源：华为致远班。</description>
 
