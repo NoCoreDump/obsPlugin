@@ -4,10 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.obs.services.ObsClient;
 import com.obs.services.model.ObsObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -46,8 +43,13 @@ public class DownloadContentUtil {
         ObsClient obsClient = new ObsClient(ak_global, sk_global, endPoint_global);
         ObsObject obsObject = obsClient.getObject(bucketName, objectKey);
         InputStream content = obsObject.getObjectContent();
-        String result = new BufferedReader(new InputStreamReader(content))
-                .lines().parallel().collect(Collectors.joining(System.lineSeparator()));
+        String result = null;
+        try {
+            result = new BufferedReader(new InputStreamReader(content, "utf-8"))
+                    .lines().parallel().collect(Collectors.joining(System.lineSeparator()));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         Map<String,Object> maps = (Map<String,Object>) JSON.parse(result);
         //System.out.println(result);
         return maps;

@@ -43,7 +43,6 @@ public class CodeGenerator extends AnAction {
         //BIG_TYPE
         BIG_TYPE = new String[categoryMap.size()];
         categoryMap.keySet().toArray(BIG_TYPE);
-
         //parametersMap
         parametersMap = (Map<String, Object>) JSON.parse(globalMap.get("parameter").toString());
 

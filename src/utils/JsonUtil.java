@@ -4,6 +4,7 @@ package utils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 /**
@@ -31,5 +32,14 @@ public class JsonUtil {
             paramsList = null;
         }
         return paramsList;
+    }
+    public static String parse2Ascii(String str) {
+        try {
+            byte[] arr = str.getBytes();
+            return new String(arr, "US-ASCII");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }
