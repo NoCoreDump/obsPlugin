@@ -88,6 +88,7 @@ public class MyFrame implements SwingConstants{
 
     public void init() {
         String osName = System.getProperties().getProperty("os.name");
+        System.out.println(osName);
         if (LINUX.equals(osName)) {
             osType = 0;
         } else {
@@ -282,8 +283,8 @@ public class MyFrame implements SwingConstants{
                                 pomPath= fileChooser.getSelectedFile().getAbsolutePath();
                             }
                             filePath = pomPath.substring(0, pomPath.length()  - 7);
-                            generatedFilePath = generateFile(filePath, languageBox.getSelectedItem().toString());
-                            runFile(pomPath, languageBox.getSelectedItem().toString(), selectedSubType);
+                            String apiName = generateFile(filePath, languageBox.getSelectedItem().toString());
+                            runFile(pomPath, languageBox.getSelectedItem().toString(), apiName);
                         }
                     });
                     mid.add(buttonRun);
@@ -393,7 +394,7 @@ public class MyFrame implements SwingConstants{
                                             .addGroup(centerLayout.createSequentialGroup()
                                                     .addComponent(right, GroupLayout.PREFERRED_SIZE, 478, GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(runPane, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(runPane, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)))
                                     .addContainerGap(149, Short.MAX_VALUE))
             );
         }
@@ -409,6 +410,8 @@ public class MyFrame implements SwingConstants{
      * @throws
      */
     private void runFile(String pomPath, String fileType, String apiName) {
+        apiName = apiName.substring(0, apiName.indexOf(".java"));
+        runResultTextArea.removeAll();
         ProjectGenerateService projectGenerateService = new ProjectGenerateServiceImpl();
         File file = new File(pomPath);
         if(!file.exists()){
@@ -418,8 +421,12 @@ public class MyFrame implements SwingConstants{
         projectGenerateService.pomFileGenerate(pomPath);
         //**************************************此处需要手工创建target文件夹**************************
         //==============================利用cmd命令编译项目，执行class文件，生成结果返回至resString==========
-        runResult = projectGenerateService.runProject(pomPath.substring(0, pomPath.length()-7),apiName);
-        if (runResult == null || runResult.length() == 0) runResult = "null";
+        pomPath = pomPath.substring(0, pomPath.length()-8);
+        System.out.println("pomPath: " + pomPath + "apiName: " + apiName);
+        runResult = projectGenerateService.runProject(pomPath,apiName);
+        if (runResult == null || runResult.length() == 0) {
+            runResult = "null";
+        }
         runResultTextArea.append(runResult);
         System.out.println(runResult);
     }
@@ -483,14 +490,12 @@ public class MyFrame implements SwingConstants{
         int x = fileName.indexOf('/');
         fileName = fileName.substring(x+1);
         try {
-            //区分Windows和Linux
-//            if (osType == 0) {
-//                path = path + "/" + fileName;
-//            } else {
-//                path = path + "\\" + fileName;
-//            }
-
-            path = path + fileName;
+//            区分Windows和Linux
+            if (osType == 0) {
+                path = path + "src/main/java/" + fileName;
+            } else {
+                path = path + "src\\main\\java\\" + fileName;
+            }
             File file = new File(path);
             if (!file.exists()) {
                 file.createNewFile();
@@ -502,7 +507,7 @@ public class MyFrame implements SwingConstants{
             bufferedWriter.newLine();
             bufferedWriter.close();
             System.out.println(path + "文件已生成");
-            return path;
+            return fileName;
         } catch (IOException e) {
             System.out.println("Fail: create file!");
         }
@@ -533,7 +538,6 @@ public class MyFrame implements SwingConstants{
         } else {
             paramsTextFields = null;
         }
-
 
     }
 
