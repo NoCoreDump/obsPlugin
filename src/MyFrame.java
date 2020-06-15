@@ -531,9 +531,7 @@ public class MyFrame implements SwingConstants{
     }
 
     private void updateParamPanes() {
-        System.out.println("updata params panes...");
         prmsPanel.removeAll();
-        System.out.println("params pane remove all...");
         paramsList = getParamsList(parametersMap, selectedSubType);
         if (paramsList != null && paramsList.length > 0) {
             int len = paramsList.length;
