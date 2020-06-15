@@ -1,0 +1,255 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) {
+			"hgap": 10
+			"vgap": 10
+		} ) {
+			name: "this"
+			"minimumSize": new java.awt.Dimension( 1000, 800 )
+			auxiliary() {
+				"JavaCodeGenerator.variableGetter": true
+			}
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "panel1"
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "North"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "panel2"
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "West"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "panel3"
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "East"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq {space :::p, comp leftParent:::p:164:p, space :::p, comp middle:::p:210:p, par l {seq {space :::x, comp right:::p:648:p, space :p:8:p}, seq {space :::p, comp scrollPane2:::::x, space :::p}}}}"
+				"$verticalGroup": "par l {seq {par l {comp leftParent::l:p:182:p, comp middle::l:p:637:p, seq l {comp right:::p:478:p, space :::p, comp scrollPane2:::p:100:p}}, space ::149:x}}"
+			} ) {
+				name: "center"
+				add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+					name: "leftParent"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+						"axis": 1
+					} ) {
+						name: "left"
+						add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+							name: "typePane"
+							auxiliary() {
+								"JavaCodeGenerator.variableName": "typePane"
+							}
+							add( new FormComponent( "javax.swing.JComboBox" ) {
+								name: "bigType"
+								"minimumSize": &Dimension0 new java.awt.Dimension( 99, 15 )
+								"preferredSize": new java.awt.Dimension( 93, 12 )
+							}, new FormLayoutConstraints( null ) {
+								"title": "类型"
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+							name: "smallTpyePane"
+							auxiliary() {
+								"JavaCodeGenerator.variableName": "smallTypePane"
+							}
+							add( new FormComponent( "javax.swing.JComboBox" ) {
+								name: "smallType"
+								"minimumSize": #Dimension0
+								"preferredSize": new java.awt.Dimension( 93, 12 )
+							}, new FormLayoutConstraints( null ) {
+								"title": "小类"
+							} )
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": "操作类型"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+					name: "middle"
+					"autoscrolls": true
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
+						name: "mid"
+						add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+							name: "akPane"
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "akField"
+								"preferredSize": new java.awt.Dimension( 49, 40 )
+							}, new FormLayoutConstraints( null ) {
+								"title": "ak"
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+							name: "skPane"
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "skField"
+								"preferredSize": new java.awt.Dimension( 49, 40 )
+							}, new FormLayoutConstraints( null ) {
+								"title": "sk"
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+							name: "endpointPane"
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "endpointField"
+								"preferredSize": new java.awt.Dimension( 49, 40 )
+							}, new FormLayoutConstraints( null ) {
+								"title": "endpoint"
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+							name: "regionPane"
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "regionField"
+								"preferredSize": new java.awt.Dimension( 49, 40 )
+							}, new FormLayoutConstraints( null ) {
+								"title": "区域"
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+							name: "bucketPane"
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "bucketField"
+								"minimumSize": new java.awt.Dimension( 49, 40 )
+								"preferredSize": new java.awt.Dimension( 49, 40 )
+							}, new FormLayoutConstraints( null ) {
+								"title": "桶名"
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+							name: "localpathPane"
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "localpathField"
+								"minimumSize": new java.awt.Dimension( 49, 40 )
+								"preferredSize": new java.awt.Dimension( 49, 40 )
+							}, new FormLayoutConstraints( null ) {
+								"title": "本地文件路径"
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+							name: "dstpatPane"
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "dstpathField"
+								"minimumSize": new java.awt.Dimension( 49, 40 )
+								"preferredSize": new java.awt.Dimension( 49, 40 )
+							}, new FormLayoutConstraints( null ) {
+								"title": "目标路径"
+							} )
+						} )
+						add( new FormComponent( "com.jformdesigner.designer.wrapper.VSpacer" ) {
+							name: "vSpacer1"
+							"preferredSize": new java.awt.Dimension( 10, 30 )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button1"
+							"text": "OK"
+							"alignmentY": 1.0f
+							"alignmentX": 0.5f
+							"margin": new java.awt.Insets( 2, 2, 0, 0 )
+							"preferredSize": new java.awt.Dimension( 78, 40 )
+							auxiliary() {
+								"JavaCodeGenerator.variableName": "buttonOK"
+							}
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "buttonOKMouseEntered", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "runButton"
+							"text": "run"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": "关键参数"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+					name: "right"
+					add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+						name: "documentPane"
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "docScrollPane"
+							add( new FormComponent( "javax.swing.JTextArea" ) {
+								name: "docTextArea"
+								"text": "https://support.huaweicloud.com/sdk-java-devg-obs/obs_21_0401.html"
+							} )
+						}, new FormLayoutConstraints( null ) {
+							"title": "OBS官网参考文档"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": "查看文档"
+					} )
+					add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+						name: "examplePane"
+						add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+							name: "javaPane"
+							add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+								name: "javaScrollPane"
+								add( new FormComponent( "javax.swing.JTextArea" ) {
+									name: "javaCodeArea"
+								} )
+							}, new FormLayoutConstraints( null ) {
+								"title": ""
+							} )
+						}, new FormLayoutConstraints( null ) {
+							"title": "java"
+						} )
+						add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+							name: "pythonPane"
+							add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+								name: "pythonScrollPane"
+								add( new FormComponent( "javax.swing.JTextArea" ) {
+									name: "pythonCodeArea"
+								} )
+							}, new FormLayoutConstraints( null ) {
+								"title": "填写左侧的参数，会生成对应SDK的示例代码"
+							} )
+						}, new FormLayoutConstraints( null ) {
+							"title": "python"
+						} )
+						add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+							name: "jsPane"
+							add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+								name: "jsScrollPane"
+								add( new FormComponent( "javax.swing.JTextArea" ) {
+									name: "jsCodeArea"
+								} )
+							}, new FormLayoutConstraints( null ) {
+								"title": "填写左侧的参数，会生成对应SDK的示例代码"
+							} )
+						}, new FormLayoutConstraints( null ) {
+							"title": "js"
+						} )
+						add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+							name: "goPane"
+							add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+								name: "goScrollPane"
+								add( new FormComponent( "javax.swing.JTextArea" ) {
+									name: "goCodeArea"
+								} )
+							}, new FormLayoutConstraints( null ) {
+								"title": "填写左侧的参数，会生成对应SDK的示例代码"
+							} )
+						}, new FormLayoutConstraints( null ) {
+							"title": "go"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": "示例代码"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane2"
+					add( new FormComponent( "javax.swing.JTextArea" ) {
+						name: "textArea1"
+						"text": "fff"
+					} )
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1090, 835 )
+		} )
+	}
+}

@@ -22,7 +22,7 @@ public class GlobalConstant {
     //操作大类
     public static String[] BIG_TYPE;
     //生成文件下拉选择项
-    public static String[] LANGE_TYPE = {"不生成文件", "java", "python", "js", "go"};
+    public static String[] LANGE_TYPE = {"Don't generate file", "java", "python", "js", "go"};
     public static final String PYTHON = "python";
     public static final String JAVA = "java";
     public static final String JS = "js";
