@@ -7,6 +7,7 @@ import constant.GlobalConstant;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import static constant.GlobalConstant.*;
@@ -21,8 +22,15 @@ public class CodeGenerator extends AnAction {
         new MyFrame();
     }
     public static void init() {
+        Locale locale = Locale.getDefault();
+        String language = locale.getLanguage();
         //从OBS上拉取全局配置信息
-        globalMap  = getMapContentFromOBS(bucket_global,typeFile);
+        if ("zh".equals(language)) {
+            globalMap = getMapContentFromOBS(bucket_global, typeFileZh);
+        } else {
+            globalMap  = getMapContentFromOBS(bucket_global,typeFileEn);
+        }
+
         /*********** 操作类型map ***************/
         JSONArray jsonArray = (JSONArray) globalMap.get("globalCategory");
         for (int i = 0; i < jsonArray.size(); i++) {

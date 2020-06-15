@@ -12,9 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.io.*;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static constant.GlobalConstant.*;
 import static utils.DownloadContentUtil.getMapContentFromOBS;
@@ -80,6 +78,8 @@ public class MyFrame implements SwingConstants{
     private String generatedFilePath; //本地路径
     private String pomPath;
     private String runResult = "";
+    private ResourceBundle message;
+    private Locale locale;
 
     public MyFrame() {
         init();
@@ -87,6 +87,16 @@ public class MyFrame implements SwingConstants{
     }
 
     public void init() {
+        Locale locale0 = Locale.getDefault();
+        String language = locale0.getLanguage();
+        String lan;
+        if ("zh".equals(language)) {
+            lan = "zh";
+        } else {
+            lan = "en";
+        }
+        locale = new Locale(lan);
+        message = ResourceBundle.getBundle("message", locale);
         String osName = System.getProperties().getProperty("os.name");
         System.out.println(osName);
         if (LINUX.equals(osName)) {
@@ -188,7 +198,7 @@ public class MyFrame implements SwingConstants{
                                 String selectedBigType = (String) bigType.getSelectedItem();
 
                                 String[] items = getSubTypeList(categoryMap, selectedBigType);
-                                System.out.println("subtype : " + Arrays.toString(items));
+//                                System.out.println("subtype : " + Arrays.toString(items));
                                 smallType.removeAllItems();
                                 for (String item : items) {
                                     smallType.addItem(item);
@@ -198,7 +208,7 @@ public class MyFrame implements SwingConstants{
                         });
                         bigType.setMinimumSize(new Dimension(30, 15));
                         bigType.setPreferredSize(new Dimension(30, 12));
-                        typePane.addTab("\u7c7b\u578b", bigType);
+                        typePane.addTab(message.getString("big_type"), bigType);
                     }
                     left.add(typePane);
 
@@ -212,14 +222,14 @@ public class MyFrame implements SwingConstants{
                                 updateParamPanes();
                             }
                         });
-                        smallType.setMinimumSize(new Dimension(99, 15));
-                        smallType.setPreferredSize(new Dimension(93, 12));
-                        smallTypePane.addTab("\u5c0f\u7c7b", smallType);
+                        smallType.setMinimumSize(new Dimension(30, 15));
+                        smallType.setPreferredSize(new Dimension(30, 12));
+                        smallTypePane.addTab(message.getString("sub_type"), smallType);
                     }
                     left.add(smallTypePane);
                 }
                 left.setSize(new Dimension(200, 200));
-                leftParent.addTab("\u64cd\u4f5c\u7c7b\u578b", left);
+                leftParent.addTab(message.getString("operation_type"), left);
             }
 
             //======== middle ========
@@ -240,7 +250,7 @@ public class MyFrame implements SwingConstants{
                     });
                     languageBox.setMinimumSize(new Dimension(30, 40));
                     languageBox.setPreferredSize(new Dimension(30, 40));
-                    languageTypePane.addTab("要生成的示例代码类型", languageBox);
+                    languageTypePane.addTab(message.getString("file_type"), languageBox);
 
                     mid.add(languageTypePane);
 
@@ -289,7 +299,7 @@ public class MyFrame implements SwingConstants{
                     });
                     mid.add(buttonRun);
                 }
-                middle.addTab("\u5173\u952e\u53c2\u6570", mid);
+                middle.addTab(message.getString("key_parameters"), mid);
             }
 
             //======== right ========
@@ -342,7 +352,7 @@ public class MyFrame implements SwingConstants{
                     }
                     examplePane.addTab("go", goPane);
                 }
-                right.addTab("\u793a\u4f8b\u4ee3\u7801", examplePane);
+                right.addTab(message.getString("sample_code"), examplePane);
 
 
                 //======== documentPane ========
@@ -355,9 +365,9 @@ public class MyFrame implements SwingConstants{
                         docTextArea.setText("https://support.huaweicloud.com/sdk-java-devg-obs/obs_21_0401.html");
                         docScrollPane.setViewportView(docTextArea);
                     }
-                    documentPane.addTab("OBS\u5b98\u7f51\u53c2\u8003\u6587\u6863", docScrollPane);
+                    documentPane.addTab(message.getString("reference"), docScrollPane);
                 }
-                right.addTab("\u67e5\u770b\u6587\u6863", documentPane);
+                right.addTab(message.getString("documents"), documentPane);
             }
 
             //======== runPane ========
@@ -521,7 +531,9 @@ public class MyFrame implements SwingConstants{
     }
 
     private void updateParamPanes() {
+        System.out.println("updata params panes...");
         prmsPanel.removeAll();
+        System.out.println("params pane remove all...");
         paramsList = getParamsList(parametersMap, selectedSubType);
         if (paramsList != null && paramsList.length > 0) {
             int len = paramsList.length;

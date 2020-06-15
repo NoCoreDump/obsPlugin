@@ -12,7 +12,8 @@ public class GlobalConstant {
     //桶名
     public static String bucket_global ="explorer";
     //配置文件的名称
-    public static String typeFile="globalType.json";
+    public static String typeFileZh="globalTypeZh.json";
+    public static String typeFileEn = "globalTypeEn.json";
     //全局配置的Map
     public static Map<String,Object> globalMap;
     //操作类型Map

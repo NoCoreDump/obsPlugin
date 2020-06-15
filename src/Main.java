@@ -1,6 +1,7 @@
 import service.impl.CodeGenerateServiceImpl;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import static constant.GlobalConstant.*;
@@ -8,8 +9,12 @@ import static utils.DownloadContentUtil.getMapContentFromOBS;
 
 public class Main {
     public static void main(String[] args) {
+
+        Locale locale = Locale.getDefault();
+        System.out.println(locale.getLanguage());
+
         //从OBS上拉取全局配置信息
-        globalMap  = getMapContentFromOBS(bucket_global,typeFile);
+        globalMap  = getMapContentFromOBS(bucket_global,typeFileEn);
         CodeGenerateServiceImpl codeGenerateService =new CodeGenerateServiceImpl();
         //测试变量
         String apiName ="列举桶";
