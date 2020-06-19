@@ -54,23 +54,23 @@ public class MyFrame implements SwingConstants{
     private JTabbedPane examplePane;
     private JTabbedPane javaPane;
     private JScrollPane javaScrollPane;
-    private JTextArea javaCodeArea;
+    private JTextPane javaCodeArea;
     private JTabbedPane pythonPane;
     private JScrollPane pythonScrollPane;
-    private JTextArea pythonCodeArea;
+    private JTextPane pythonCodeArea;
     private JTabbedPane jsPane;
     private JScrollPane jsScrollPane;
-    private JTextArea jsCodeArea;
+    private JTextPane jsCodeArea;
     private JTabbedPane goPane;
     private JScrollPane goScrollPane;
-    private JTextArea goCodeArea;
+    private JTextPane goCodeArea;
     private JTabbedPane documentPane;
     private JScrollPane docScrollPane;
-    private JTextArea docTextArea;
+    private JTextPane docTextArea;
     private JTabbedPane languageTypePane;
     private JComboBox languageBox;
     private JScrollPane runPane;
-    private JTextArea runResultTextArea;
+    private JTextPane runResultTextArea;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     /************* 自定义变量 ******************/
@@ -80,7 +80,7 @@ public class MyFrame implements SwingConstants{
     private String[] paramsList;
     private JTabbedPane[] paramsPane;
     private JTextField[] paramsTextFields;
-    private int osType;
+    private int osType; //0 - linux; 1 - windows
     private String generatedFilePath; //本地路径
     private String pomPath;
     private String runResult = "";
@@ -149,21 +149,21 @@ public class MyFrame implements SwingConstants{
         examplePane = new JTabbedPane();
         javaPane = new JTabbedPane();
         javaScrollPane = new JScrollPane();
-        javaCodeArea = new JTextArea();
+        javaCodeArea = new JTextPane();
         pythonPane = new JTabbedPane();
         pythonScrollPane = new JScrollPane();
-        pythonCodeArea = new JTextArea();
+        pythonCodeArea = new JTextPane();
         jsPane = new JTabbedPane();
         jsScrollPane = new JScrollPane();
-        jsCodeArea = new JTextArea();
+        jsCodeArea = new JTextPane();
         goPane = new JTabbedPane();
         goScrollPane = new JScrollPane();
-        goCodeArea = new JTextArea();
+        goCodeArea = new JTextPane();
         documentPane = new JTabbedPane();
         docScrollPane = new JScrollPane();
-        docTextArea = new JTextArea();
+        docTextArea = new JTextPane();
         runPane = new JScrollPane();
-        runResultTextArea = new JTextArea();
+        runResultTextArea = new JTextPane();
 
     }
     public void placePanel(){
@@ -216,7 +216,6 @@ public class MyFrame implements SwingConstants{
                                     smallType.addItem(item);
                                 }
                                 selectedSubType = items[0];
-                                updateParamPanes();
                             }
                         });
                         bigType.setMinimumSize(new Dimension(30, 15));
@@ -321,6 +320,12 @@ public class MyFrame implements SwingConstants{
                     buttonRun.setPreferredSize(new Dimension(78, 40));
                     buttonRun.addActionListener(e -> {
                         runResultTextArea.setText("");
+                        javaCodeArea.setText("");
+                        pythonCodeArea.setText("");
+                        jsCodeArea.setText("");
+                        goCodeArea.setText("");
+                        generateCode(paramsTextFields, paramsList);
+                        generateReferenct();
                         if (languageTypeIndex != 0) {
                             String filePath;
                             JFileChooser fileChooser;
@@ -332,6 +337,11 @@ public class MyFrame implements SwingConstants{
                                 pomPath= fileChooser.getSelectedFile().getAbsolutePath();
                             }
                             filePath = pomPath.substring(0, pomPath.length()  - 7);
+                            String targetPath = (osType == 1) ? filePath + "\\target" : filePath + "/target";
+                            File file = new File(targetPath);
+                            if (!file.exists()) {
+                                file.mkdir();
+                            }
                             String apiName = generateFile(filePath, languageBox.getSelectedItem().toString());
                             runFile(pomPath, languageBox.getSelectedItem().toString(), apiName);
                         }
@@ -475,7 +485,7 @@ public class MyFrame implements SwingConstants{
         if (runResult == null || runResult.length() == 0) {
             runResult = "null";
         }
-        runResultTextArea.append(runResult);
+        runResultTextArea.setText(runResult);
         System.out.println(runResult);
     }
 
@@ -495,27 +505,27 @@ public class MyFrame implements SwingConstants{
             }
         }
         try {
-            javaCodeArea.append(codeGenerateService.getCodeStr(selectedSubType, params, JAVA));
+            javaCodeArea.setText(codeGenerateService.getCodeStr(selectedSubType, params, JAVA));
         } catch (Exception e) {
-            javaCodeArea.append(e.getMessage());
+            javaCodeArea.setText(e.getMessage());
             e.printStackTrace();
         }
         try {
-            pythonCodeArea.append(codeGenerateService.getCodeStr(selectedSubType, params, PYTHON));
+            pythonCodeArea.setText(codeGenerateService.getCodeStr(selectedSubType, params, PYTHON));
         } catch (Exception e) {
-            pythonCodeArea.append(e.getMessage());
+            pythonCodeArea.setText(e.getMessage());
             e.printStackTrace();
         }
         try {
-            goCodeArea.append(codeGenerateService.getCodeStr(selectedSubType, params, GO));
+            goCodeArea.setText(codeGenerateService.getCodeStr(selectedSubType, params, GO));
         } catch (Exception e) {
-            goCodeArea.append(e.getMessage());
+            goCodeArea.setText(e.getMessage());
             e.printStackTrace();
         }
         try {
-            jsCodeArea.append(codeGenerateService.getCodeStr(selectedSubType, params, JS));
+            jsCodeArea.setText(codeGenerateService.getCodeStr(selectedSubType, params, JS));
         } catch (Exception e) {
-            jsCodeArea.append(e.getMessage());
+            jsCodeArea.setText(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -569,7 +579,7 @@ public class MyFrame implements SwingConstants{
     private void generateReferenct() {
         Map<String, Object> referenceMap = (Map<String, Object>) JSON.parse(globalMap.get("referenceWebsite").toString());
         String referenceUrl = (String)referenceMap.get(selectedSubType);
-        docTextArea.append(referenceUrl);
+        docTextArea.setText(referenceUrl);
     }
 
     private void updateParamPanes() {

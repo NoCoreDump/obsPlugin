@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class GlobalConstant {
     //节点
-    public static String endPoint_global = "https://obs.cn-southwest-2.myhuaweicloud.com";
+    public static String endPoint_global = "obs.cn-southwest-2.myhuaweicloud.com";
     //密钥
     public static String ak_global = "KKIM9TEDSNDTINDVDCHW";
     public static String sk_global = "o6H6ZKOh88AVIHNN3Mci5vCo3hEtKBE1PtzYGKnI";
@@ -14,6 +14,8 @@ public class GlobalConstant {
     //配置文件的名称
     public static String typeFileZh="globalTypeZh.json";
     public static String typeFileEn = "globalTypeEn.json";
+    //URL
+    public static String URL = "https://" + bucket_global + "." + endPoint_global + "/";
     //全局配置的Map
     public static Map<String,Object> globalMap;
     //操作类型Map

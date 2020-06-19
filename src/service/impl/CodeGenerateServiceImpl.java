@@ -6,8 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static constant.GlobalConstant.bucket_global;
-import static constant.GlobalConstant.globalMap;
+import static constant.GlobalConstant.*;
 import static utils.DownloadContentUtil.getStrContentFromOBS;
 
 public class CodeGenerateServiceImpl implements CodeGenerateService {
@@ -39,7 +38,7 @@ public class CodeGenerateServiceImpl implements CodeGenerateService {
         String codeContent=new String();
         //====================从路径对应的文件中获取代码内容============================
         try {
-            codeContent = getStrContentFromOBS(bucket_global,filePath);
+            codeContent = getStrContentFromOBS(URL + filePath, null);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -5,6 +5,9 @@ import com.obs.services.ObsClient;
 import com.obs.services.model.ObsObject;
 
 import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -16,46 +19,177 @@ import static constant.GlobalConstant.*;
 public class DownloadContentUtil {
     /**
      *  从OBS拉取代码文件，替换参数内容，生成可执行文本内容
-     * @param bucketName
-     * @param objectKey
+     * @param url
+     * @param param
      * @return
      * @throws IOException
      */
-    public static String getStrContentFromOBS(String bucketName, String objectKey) throws IOException {
-        // 创建ObsClient实例
-        ObsClient obsClient = new ObsClient(ak_global, sk_global, endPoint_global);
-        ObsObject obsObject = obsClient.getObject(bucketName, objectKey);
-        InputStream content = obsObject.getObjectContent();
-        InputStreamReader fReader = new InputStreamReader(content,"UTF-8");
-        String result = new BufferedReader(fReader)
-        .lines().parallel().collect(Collectors.joining(System.lineSeparator()));
+    public static String getStrContentFromOBS(String url, String param) throws IOException {
+        String result = "";
+        InputStream in = null;
+        try {
+            String urlNameString = url;
+            if (param != null && param.length() > 0) {
+                urlNameString += "?" + param;
+            }
+            URL realUrl = new URL(urlNameString);
+            // 打开和URL之间的连接
+            URLConnection connection = realUrl.openConnection();
+            // 设置通用的请求属性
+            connection.setRequestProperty("accept", "*/*");
+            connection.setRequestProperty("connection", "Keep-Alive");
+            connection.setRequestProperty("user-agent",
+                    "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+            // 建立实际的连接
+            connection.connect();
+            // 获取所有响应头字段
+            Map<String, List<String>> map = connection.getHeaderFields();
+            // 遍历所有的响应头字段
+//            for (String key : map.keySet()) {
+//                System.out.println(key + "--->" + map.get(key));
+//            }
+            in = connection.getInputStream();
+
+            try {
+                result = new BufferedReader(new InputStreamReader(in, "utf-8"))
+                        .lines().parallel().collect(Collectors.joining(System.lineSeparator()));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+        } catch (Exception e) {
+            System.out.println("Get error！" + e);
+            e.printStackTrace();
+        }
+        // 使用finally块来关闭输入流
+        finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
         return result;
     }
 
     /**
      * 从OBS上拉取配置文件，包含各个类别信息、每个接口的参数信息等
-     * @param bucketName
-     * @param objectKey
+     * @param url Json配置文件的URL
+     * @param param get请求的参数
      * @return
      */
-    public static Map<String,Object> getMapContentFromOBS(String bucketName, String objectKey) {
-        // 创建ObsClient实例
-        ObsClient obsClient = new ObsClient(ak_global, sk_global, endPoint_global);
-        ObsObject obsObject = obsClient.getObject(bucketName, objectKey);
-        InputStream content = obsObject.getObjectContent();
-        String result = null;
+    public static Map<String,Object> getMapContentFromOBS(String url, String param) {
+        String result = "";
+        InputStream in = null;
         try {
-            result = new BufferedReader(new InputStreamReader(content, "utf-8"))
-                    .lines().parallel().collect(Collectors.joining(System.lineSeparator()));
-        } catch (UnsupportedEncodingException e) {
+            String urlNameString = url;
+            if (param != null && param.length() > 0) {
+                urlNameString += "?" + param;
+            }
+            URL realUrl = new URL(urlNameString);
+            // 打开和URL之间的连接
+            URLConnection connection = realUrl.openConnection();
+            // 设置通用的请求属性
+            connection.setRequestProperty("accept", "*/*");
+            connection.setRequestProperty("connection", "Keep-Alive");
+            connection.setRequestProperty("user-agent",
+                    "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+            // 建立实际的连接
+            connection.connect();
+            // 获取所有响应头字段
+            Map<String, List<String>> map = connection.getHeaderFields();
+            // 遍历所有的响应头字段
+//            for (String key : map.keySet()) {
+//                System.out.println(key + "--->" + map.get(key));
+//            }
+            in = connection.getInputStream();
+
+            try {
+                result = new BufferedReader(new InputStreamReader(in, "utf-8"))
+                        .lines().parallel().collect(Collectors.joining(System.lineSeparator()));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+        } catch (Exception e) {
+            System.out.println("Get error！" + e);
             e.printStackTrace();
+        }
+        // 使用finally块来关闭输入流
+        finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+        Map<String,Object> maps = (Map<String,Object>) JSON.parse(result);
+        return maps;
+    }
+    public static Map<String, Object> sendGet(String url, String param) {
+        String result = "";
+        InputStream in = null;
+        try {
+            String urlNameString = url;
+            if (param != null && param.length() > 0) {
+                url += "?" + param;
+            }
+            URL realUrl = new URL(urlNameString);
+            // 打开和URL之间的连接
+            URLConnection connection = realUrl.openConnection();
+            // 设置通用的请求属性
+            connection.setRequestProperty("accept", "*/*");
+            connection.setRequestProperty("connection", "Keep-Alive");
+            connection.setRequestProperty("user-agent",
+                    "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+            // 建立实际的连接
+            connection.connect();
+            // 获取所有响应头字段
+            Map<String, List<String>> map = connection.getHeaderFields();
+            // 遍历所有的响应头字段
+            for (String key : map.keySet()) {
+                System.out.println(key + "--->" + map.get(key));
+            }
+            in = connection.getInputStream();
+
+            try {
+                result = new BufferedReader(new InputStreamReader(in, "utf-8"))
+                        .lines().parallel().collect(Collectors.joining(System.lineSeparator()));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+        } catch (Exception e) {
+            System.out.println("Get error！" + e);
+            e.printStackTrace();
+        }
+        // 使用finally块来关闭输入流
+        finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
         }
         Map<String,Object> maps = (Map<String,Object>) JSON.parse(result);
         //System.out.println(result);
         return maps;
     }
     public static void main(String[] args) throws IOException {
-         getStrContentFromOBS(bucket_global, "codeTemplate_java/ListBuckets.java");
+        String url = "https://" + bucket_global + "." + endPoint_global + "/" + typeFileZh;
+//        String url = "http://www.baidu.com";
+        System.out.println(url);
+//        Map<String, Object> result = sendGet(url, "");
+        String res = getStrContentFromOBS(url, null);
+        System.out.println("---------------------------------");
+        System.out.println(res.toString());
     }
+
 
 }

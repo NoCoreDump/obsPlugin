@@ -26,9 +26,9 @@ public class CodeGenerator extends AnAction {
         String language = locale.getLanguage();
         //从OBS上拉取全局配置信息
         if ("zh".equals(language)) {
-            globalMap = getMapContentFromOBS(bucket_global, typeFileZh);
+            globalMap = getMapContentFromOBS(URL + typeFileZh, null);
         } else {
-            globalMap  = getMapContentFromOBS(bucket_global,typeFileEn);
+            globalMap  = getMapContentFromOBS(URL + typeFileEn, null);
         }
 
         /*********** 操作类型map ***************/
