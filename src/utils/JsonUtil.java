@@ -22,17 +22,7 @@ public class JsonUtil {
         return subTypeList;
     }
 
-    public static String[] getParamsList(Map<String, Object> map, String key) {
-        JSONArray js = (JSONArray) map.get(key);
-        String[] paramsList;
-        if (js != null) {
-            paramsList = new String[js.size()];
-            js.toArray(paramsList);
-        } else {
-            paramsList = null;
-        }
-        return paramsList;
-    }
+
     public static String parse2Ascii(String str) {
         try {
             byte[] arr = str.getBytes();

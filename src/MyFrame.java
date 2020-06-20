@@ -1,7 +1,5 @@
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import constant.GlobalConstant;
 import org.jdesktop.swingx.VerticalLayout;
 import service.ProjectGenerateService;
@@ -13,11 +11,9 @@ import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.io.*;
 import java.util.*;
+import java.util.List;
 
 import static constant.GlobalConstant.*;
-import static utils.DownloadContentUtil.getMapContentFromOBS;
-import static utils.JsonUtil.getParamsList;
-import static utils.JsonUtil.getSubTypeList;
 
 /**
  * @program: MyPlugin
@@ -52,18 +48,8 @@ public class MyFrame implements SwingConstants{
 
     private JTabbedPane right;
     private JTabbedPane examplePane;
-    private JTabbedPane javaPane;
-    private JScrollPane javaScrollPane;
-    private JTextPane javaCodeArea;
-    private JTabbedPane pythonPane;
-    private JScrollPane pythonScrollPane;
-    private JTextPane pythonCodeArea;
-    private JTabbedPane jsPane;
-    private JScrollPane jsScrollPane;
-    private JTextPane jsCodeArea;
-    private JTabbedPane goPane;
-    private JScrollPane goScrollPane;
-    private JTextPane goCodeArea;
+    private JScrollPane codeScrollPane;
+    private JTextPane codeArea;
     private JTabbedPane documentPane;
     private JScrollPane docScrollPane;
     private JTextPane docTextArea;
@@ -76,12 +62,11 @@ public class MyFrame implements SwingConstants{
     /************* 自定义变量 ******************/
     private JFrame frame;
     private String selectedSubType;
-    private int languageTypeIndex;
-    private String[] paramsList;
+    private String selectedLangType;
+    private ArrayList<String> paramsList;
     private JTabbedPane[] paramsPane;
     private JTextField[] paramsTextFields;
     private int osType; //0 - linux; 1 - windows
-    private String generatedFilePath; //本地路径
     private String pomPath;
     private String runResult = "";
     private ResourceBundle message;
@@ -113,9 +98,8 @@ public class MyFrame implements SwingConstants{
         frame = new JFrame("obs");
 
         //初始化小类
-        String[] subTypeList;
-        subTypeList = getSubTypeList(categoryMap, BIG_TYPE[0]);
-        selectedSubType = subTypeList[0];
+        Object[] subTypeList = menu.get(BIG_TYPE[0]).toArray();
+        selectedSubType = (String)subTypeList[0];
         System.out.println(selectedSubType);
         /******************************************************************/
         panel1 = new JPanel();
@@ -140,25 +124,17 @@ public class MyFrame implements SwingConstants{
         endpointField = new JTextField();
         prmsPanel = new JPanel();
         languageTypePane = new JTabbedPane();
-        languageBox = new JComboBox(LANGE_TYPE);
+        languageBox = new JComboBox(languageList.toArray());
+        selectedLangType = languageList.get(0);
         vSpacer1 = new JPanel(null);
         buttonOK = new JButton();
         buttonRun = new JButton();
         //right
         right = new JTabbedPane();
         examplePane = new JTabbedPane();
-        javaPane = new JTabbedPane();
-        javaScrollPane = new JScrollPane();
-        javaCodeArea = new JTextPane();
-        pythonPane = new JTabbedPane();
-        pythonScrollPane = new JScrollPane();
-        pythonCodeArea = new JTextPane();
-        jsPane = new JTabbedPane();
-        jsScrollPane = new JScrollPane();
-        jsCodeArea = new JTextPane();
-        goPane = new JTabbedPane();
-        goScrollPane = new JScrollPane();
-        goCodeArea = new JTextPane();
+        codeScrollPane = new JScrollPane();
+        codeArea = new JTextPane();
+
         documentPane = new JTabbedPane();
         docScrollPane = new JScrollPane();
         docTextArea = new JTextPane();
@@ -209,13 +185,13 @@ public class MyFrame implements SwingConstants{
                             if (e.getStateChange() == ItemEvent.SELECTED) {
                                 String selectedBigType = (String) bigType.getSelectedItem();
 
-                                String[] items = getSubTypeList(categoryMap, selectedBigType);
+                                Object[] items = menu.get(selectedBigType).toArray();
 //                                System.out.println("subtype : " + Arrays.toString(items));
                                 smallType.removeAllItems();
-                                for (String item : items) {
+                                for (Object item : items) {
                                     smallType.addItem(item);
                                 }
-                                selectedSubType = items[0];
+                                selectedSubType = (String)items[0];
                             }
                         });
                         bigType.setMinimumSize(new Dimension(30, 15));
@@ -283,7 +259,7 @@ public class MyFrame implements SwingConstants{
                     //============= languageBox ========
                     languageBox.addItemListener(e -> {
                         if (e.getStateChange() == ItemEvent.SELECTED) {
-                            languageTypeIndex = languageBox.getSelectedIndex();
+                            selectedLangType = (String) languageBox.getSelectedItem();
                         }
                     });
                     languageBox.setMinimumSize(new Dimension(30, 40));
@@ -303,10 +279,7 @@ public class MyFrame implements SwingConstants{
                     buttonOK.setMargin(new Insets(2, 2, 0, 0));
                     buttonOK.setPreferredSize(new Dimension(78, 40));
                     buttonOK.addActionListener(e-> {
-                        javaCodeArea.setText("");
-                        pythonCodeArea.setText("");
-                        jsCodeArea.setText("");
-                        goCodeArea.setText("");
+                        codeArea.setText("");
                         generateCode(paramsTextFields, paramsList);
                         generateReferenct();
                     });
@@ -320,13 +293,9 @@ public class MyFrame implements SwingConstants{
                     buttonRun.setPreferredSize(new Dimension(78, 40));
                     buttonRun.addActionListener(e -> {
                         runResultTextArea.setText("");
-                        javaCodeArea.setText("");
-                        pythonCodeArea.setText("");
-                        jsCodeArea.setText("");
-                        goCodeArea.setText("");
+                        codeArea.setText("");
                         generateCode(paramsTextFields, paramsList);
                         generateReferenct();
-                        if (languageTypeIndex != 0) {
                             String filePath;
                             JFileChooser fileChooser;
                             String defaultPath = (osType == 0) ? LINUX_PATH : WIN_PATH;
@@ -344,7 +313,7 @@ public class MyFrame implements SwingConstants{
                             }
                             String apiName = generateFile(filePath, languageBox.getSelectedItem().toString());
                             runFile(pomPath, languageBox.getSelectedItem().toString(), apiName);
-                        }
+
                     });
                     mid.add(buttonRun);
                 }
@@ -362,44 +331,12 @@ public class MyFrame implements SwingConstants{
 
                         //======== javaScrollPane ========
                         {
-                            javaScrollPane.setViewportView(javaCodeArea);
+                            codeScrollPane.setViewportView(codeArea);
                         }
-                        javaPane.addTab("", javaScrollPane);
                     }
-                    examplePane.addTab("java", javaPane);
+                    examplePane.addTab("code", codeScrollPane);
 
-                    //======== pythonPane ========
-                    {
 
-                        //======== pythonScrollPane ========
-                        {
-                            pythonScrollPane.setViewportView(pythonCodeArea);
-                        }
-                        pythonPane.addTab("", pythonScrollPane);
-                    }
-                    examplePane.addTab("python", pythonPane);
-
-                    //======== jsPane ========
-                    {
-
-                        //======== jsScrollPane ========
-                        {
-                            jsScrollPane.setViewportView(jsCodeArea);
-                        }
-                        jsPane.addTab("", jsScrollPane);
-                    }
-                    examplePane.addTab("js", jsPane);
-
-                    //======== goPane ========
-                    {
-
-                        //======== goScrollPane ========
-                        {
-                            goScrollPane.setViewportView(goCodeArea);
-                        }
-                        goPane.addTab("", goScrollPane);
-                    }
-                    examplePane.addTab("go", goPane);
                 }
                 right.addTab(message.getString("sample_code"), examplePane);
 
@@ -489,7 +426,7 @@ public class MyFrame implements SwingConstants{
         System.out.println(runResult);
     }
 
-    private void generateCode(JTextField[] paramsTextFields, String[] paramsList) {
+    private void generateCode(JTextField[] paramsTextFields, ArrayList<String> paramsList) {
 //        if (paramsTextFields == null || paramsTextFields.length == 0) return;
         CodeGenerateServiceImpl codeGenerateService =new CodeGenerateServiceImpl();
         Map<String, String> params = new HashMap<>();
@@ -497,37 +434,20 @@ public class MyFrame implements SwingConstants{
         params.put(SK, skField.getText());
         params.put(ENDPOINT, endpointField.getText());
         if (paramsList != null && paramsTextFields != null) {
-            System.out.println("paramList: " + Arrays.toString(paramsList));
-            for (int i = 0; i < paramsList.length; i++) {
-                String s = paramsList[i];
+            for (int i = 0; i < paramsList.size(); i++) {
+                if (paramsList.get(i).equals("null")) break;
+                String s = paramsList.get(i);
                 params.put(s, paramsTextFields[i].getText());
 
             }
         }
         try {
-            javaCodeArea.setText(codeGenerateService.getCodeStr(selectedSubType, params, JAVA));
+            codeArea.setText(codeGenerateService.getCodeStr(selectedSubType, params, selectedLangType));
         } catch (Exception e) {
-            javaCodeArea.setText(e.getMessage());
+            codeArea.setText(e.getMessage());
             e.printStackTrace();
         }
-        try {
-            pythonCodeArea.setText(codeGenerateService.getCodeStr(selectedSubType, params, PYTHON));
-        } catch (Exception e) {
-            pythonCodeArea.setText(e.getMessage());
-            e.printStackTrace();
-        }
-        try {
-            goCodeArea.setText(codeGenerateService.getCodeStr(selectedSubType, params, GO));
-        } catch (Exception e) {
-            goCodeArea.setText(e.getMessage());
-            e.printStackTrace();
-        }
-        try {
-            jsCodeArea.setText(codeGenerateService.getCodeStr(selectedSubType, params, JS));
-        } catch (Exception e) {
-            jsCodeArea.setText(e.getMessage());
-            e.printStackTrace();
-        }
+
     }
 
 
@@ -539,16 +459,8 @@ public class MyFrame implements SwingConstants{
      * @return void
      **/
     private String generateFile(String path, String fileType) {
-        String code = "";
-        String tmpFilePath = "templateFilePath_";
-        switch(fileType) {
-            case JAVA: tmpFilePath += "Java"; code = javaCodeArea.getText(); break;
-            case PYTHON: tmpFilePath += "Python"; code = pythonCodeArea.getText(); break;
-            case JS: tmpFilePath += "Js"; code = jsCodeArea.getText(); break;
-            case GO: tmpFilePath += "Go"; code = goCodeArea.getText(); break;
-        }
-        Map<String, Object> fileNameMap = (Map<String, Object>) JSON.parse(globalMap.get(tmpFilePath).toString());
-        String fileName = (String)fileNameMap.get(selectedSubType);
+        String code = codeArea.getText();
+        String fileName = globalMap.get(selectedSubType).filePath.get(fileType);
         int x = fileName.indexOf('/');
         fileName = fileName.substring(x+1);
         try {
@@ -577,24 +489,29 @@ public class MyFrame implements SwingConstants{
     }
 
     private void generateReferenct() {
-        Map<String, Object> referenceMap = (Map<String, Object>) JSON.parse(globalMap.get("referenceWebsite").toString());
-        String referenceUrl = (String)referenceMap.get(selectedSubType);
+        String referenceUrl = globalMap.get(selectedSubType).referenceWebsite;
         docTextArea.setText(referenceUrl);
     }
 
     private void updateParamPanes() {
         prmsPanel.removeAll();
-        paramsList = getParamsList(parametersMap, selectedSubType);
-        if (paramsList != null && paramsList.length > 0) {
-            int len = paramsList.length;
+        System.out.println("global Map: " + globalMap.keySet());
+        System.out.println("selectedSubType:" + selectedSubType);
+        paramsList = null;
+        paramsList = new ArrayList<>(globalMap.get(selectedSubType).parameter);
+        System.out.println("params: " + paramsList);
+        if (paramsList != null && paramsList.size() > 0) {
+            int len = paramsList.size();
             paramsPane = new JTabbedPane[len];
             paramsTextFields = new JTextField[len];
-            System.out.println("paramList: " + Arrays.toString(paramsList));
             for (int i = 0; i < len; i++) {
+                if (paramsList.get(i).equals("null")) {
+                    break;
+                }
                 paramsPane[i] = new JTabbedPane();
                 paramsTextFields[i] = new JTextField();
                 paramsTextFields[i].setPreferredSize(new Dimension(49, 40));
-                paramsPane[i].addTab(paramsList[i], paramsTextFields[i]);
+                paramsPane[i].addTab(paramsList.get(i), paramsTextFields[i]);
                 prmsPanel.add(paramsPane[i]);
             }
         } else {
@@ -604,7 +521,7 @@ public class MyFrame implements SwingConstants{
     }
 
     public static void main(String[] args) {
-        CodeGenerator.init();
+        new CodeGenerator().init();
         new MyFrame();
     }
 }

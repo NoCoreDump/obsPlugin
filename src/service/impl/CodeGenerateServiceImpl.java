@@ -21,20 +21,11 @@ public class CodeGenerateServiceImpl implements CodeGenerateService {
     @Override
     public String getCodeStr(String apiName, Map<String, String> parameters, String languageType) {
         //====================从全局map中拉取代码存放的路径===========================
-        Map<String, Object> templatePath=new HashMap<>();
-        switch (languageType) {
-            case "java":
-                templatePath = (Map<String, Object>) globalMap.get("templateFilePath_Java");
-                break;
-            case "python":
-                templatePath = (Map<String, Object>) globalMap.get("templateFilePath_Python");
-                break;
-            case "go":
-                templatePath = (Map<String, Object>) globalMap.get("templateFilePath_Go");
-                break;
-        }
+
         //====================获取需要生成的接口路径===================================
-        String filePath = (String) templatePath.get(apiName);
+        System.out.println(globalMap.get(apiName));
+        String filePath = globalMap.get(apiName).filePath.get(languageType);
+        System.out.println("filePath: " + filePath);
         String codeContent=new String();
         //====================从路径对应的文件中获取代码内容============================
         try {

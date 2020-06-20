@@ -5,13 +5,14 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import constant.GlobalConstant;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.*;
 
 import static constant.GlobalConstant.*;
-import static utils.DownloadContentUtil.getMapContentFromOBS;
+import static utils.DownloadContentUtil.*;
 
 public class CodeGenerator extends AnAction {
 
@@ -21,31 +22,53 @@ public class CodeGenerator extends AnAction {
         init();
         new MyFrame();
     }
-    public static void init() {
+    public void init() {
         Locale locale = Locale.getDefault();
-        String language = locale.getLanguage();
-        //从OBS上拉取全局配置信息
-        if ("zh".equals(language)) {
-            globalMap = getMapContentFromOBS(URL + typeFileZh, null);
-        } else {
-            globalMap  = getMapContentFromOBS(URL + typeFileEn, null);
-        }
+        String languageType = locale.getLanguage();
+        initConfig();
 
-        /*********** 操作类型map ***************/
-        JSONArray jsonArray = (JSONArray) globalMap.get("globalCategory");
-        for (int i = 0; i < jsonArray.size(); i++) {
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-            for (Map.Entry<String, Object> e : jsonObject.entrySet()) {
-                categoryMap.put(e.getKey(), e.getValue());
+        //从OBS上拉取全局配置信息
+        try {
+            if ("zh".equals(languageType)) {
+                getGlobalConfig(getStrContentFromOBS(URL + typeFileZh, null));
+            } else {
+                getGlobalConfig(getStrContentFromOBS(URL + typeFileZh, null));
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         //BIG_TYPE
-        BIG_TYPE = new String[categoryMap.size()];
-        categoryMap.keySet().toArray(BIG_TYPE);
+        BIG_TYPE = new String[menu.size()];
+        menu.keySet().toArray(BIG_TYPE);
+        System.out.println(Arrays.toString(BIG_TYPE));
         //parametersMap
-        parametersMap = (Map<String, Object>) JSON.parse(globalMap.get("parameter").toString());
 
+
+    }
+
+    public void initConfig() {
+        //读取配置文件
+        InputStreamReader inputStreamReader = null;
+        Properties props = new Properties();
+        try {
+            inputStreamReader = new InputStreamReader(this.getClass().getResourceAsStream("/config.properties"), "utf-8");
+            props.load(inputStreamReader);
+            ak_global = props.getProperty(AK);
+            sk_global = props.getProperty(SK);
+            endPoint_global = props.getProperty(ENDPOINT);
+            bucket_global = props.getProperty(BUCKET);
+            typeFileEn = props.getProperty(TYPE_FILE_EN);
+            typeFileZh = props.getProperty(TYPE_FILE_ZH);
+            URL = "https://" + bucket_global + "." + endPoint_global + "/";
+            inputStreamReader.close();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("url : " + URL);
     }
 
 }
