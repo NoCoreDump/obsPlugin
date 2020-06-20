@@ -1,6 +1,4 @@
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import constant.GlobalConstant;
@@ -37,14 +35,9 @@ public class CodeGenerator extends AnAction {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         //BIG_TYPE
         BIG_TYPE = new String[menu.size()];
         menu.keySet().toArray(BIG_TYPE);
-        System.out.println(Arrays.toString(BIG_TYPE));
-        //parametersMap
-
-
     }
 
     public void initConfig() {
@@ -68,7 +61,6 @@ public class CodeGenerator extends AnAction {
             e.printStackTrace();
         }
 
-        System.out.println("url : " + URL);
     }
 
 }

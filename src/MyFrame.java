@@ -296,23 +296,24 @@ public class MyFrame implements SwingConstants{
                         codeArea.setText("");
                         generateCode(paramsTextFields, paramsList);
                         generateReferenct();
-                            String filePath;
-                            JFileChooser fileChooser;
-                            String defaultPath = (osType == 0) ? LINUX_PATH : WIN_PATH;
-                            fileChooser = new JFileChooser(defaultPath);
-                            fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-                            int returnVal = fileChooser.showOpenDialog(fileChooser);
-                            if(returnVal == JFileChooser.APPROVE_OPTION) {
-                                pomPath= fileChooser.getSelectedFile().getAbsolutePath();
-                            }
-                            filePath = pomPath.substring(0, pomPath.length()  - 7);
-                            String targetPath = (osType == 1) ? filePath + "\\target" : filePath + "/target";
-                            File file = new File(targetPath);
-                            if (!file.exists()) {
-                                file.mkdir();
-                            }
-                            String apiName = generateFile(filePath, languageBox.getSelectedItem().toString());
-                            runFile(pomPath, languageBox.getSelectedItem().toString(), apiName);
+                        String filePath = "";
+                        JFileChooser fileChooser;
+                        String defaultPath = (osType == 0) ? LINUX_PATH : WIN_PATH;
+                        fileChooser = new JFileChooser(defaultPath);
+                        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                        int returnVal = fileChooser.showOpenDialog(fileChooser);
+                        if(returnVal == JFileChooser.APPROVE_OPTION) {
+                            filePath= fileChooser.getSelectedFile().getAbsolutePath();
+                        }
+                        System.out.println("************* file path; " + filePath);
+                        String targetPath = (osType == 1) ? filePath + "\\target" : filePath + "/target";
+                        File file = new File(targetPath);
+                        if (!file.exists()) {
+                            file.mkdir();
+                        }
+                        String apiName = generateFile(filePath, languageBox.getSelectedItem().toString());
+                        System.out.println("********** apiName: " + apiName);
+                        runFile(filePath, languageBox.getSelectedItem().toString(), apiName);
 
                     });
                     mid.add(buttonRun);
@@ -405,20 +406,14 @@ public class MyFrame implements SwingConstants{
      * @updateTime 20-6-15 上午9:49
      * @throws
      */
-    private void runFile(String pomPath, String fileType, String apiName) {
+    private void runFile(String filePath, String fileType, String apiName) {
+
         apiName = apiName.substring(0, apiName.indexOf(".java"));
         ProjectGenerateService projectGenerateService = new ProjectGenerateServiceImpl();
-        File file = new File(pomPath);
-        if(!file.exists()){
-            System.out.println("文件不存在，请检查工程目录");
-            return;
-        }
-        projectGenerateService.pomFileGenerate(pomPath);
-        //**************************************此处需要手工创建target文件夹**************************
+
         //==============================利用cmd命令编译项目，执行class文件，生成结果返回至resString==========
-        pomPath = pomPath.substring(0, pomPath.length()-8);
-        System.out.println("pomPath: " + pomPath + "apiName: " + apiName);
-        runResult = projectGenerateService.runProject(pomPath,apiName);
+        System.out.println("filePath: " + filePath + "apiName: " + apiName);
+        runResult = projectGenerateService.runProject(filePath,apiName);
         if (runResult == null || runResult.length() == 0) {
             runResult = "null";
         }
@@ -427,7 +422,7 @@ public class MyFrame implements SwingConstants{
     }
 
     private void generateCode(JTextField[] paramsTextFields, ArrayList<String> paramsList) {
-//        if (paramsTextFields == null || paramsTextFields.length == 0) return;
+        if (paramsTextFields == null || paramsTextFields.length == 0) return;
         CodeGenerateServiceImpl codeGenerateService =new CodeGenerateServiceImpl();
         Map<String, String> params = new HashMap<>();
         params.put(AK, akField.getText());
@@ -453,22 +448,24 @@ public class MyFrame implements SwingConstants{
 
     /*
      * @Author sunwb
-     * @Description 将生成的代码文件保存到目标文件路径
+     * @Description 将生成的代码文件保存到目标工程/src/main/java/下
      * @Date 23:02 2020/6/7
-     * @Param []
+     * @Param path 工程目录
+     * @Param fileType 文件类型：java python go ...
      * @return void
      **/
     private String generateFile(String path, String fileType) {
         String code = codeArea.getText();
         String fileName = globalMap.get(selectedSubType).filePath.get(fileType);
+        System.out.println("---------fileName:" + fileName);
         int x = fileName.indexOf('/');
         fileName = fileName.substring(x+1);
         try {
 //            区分Windows和Linux
             if (osType == 0) {
-                path = path + "src/main/java/" + fileName;
+                path = path + "/src/main/java/" + fileName;
             } else {
-                path = path + "src\\main\\java\\" + fileName;
+                path = path + "\\src\\main\\java\\" + fileName;
             }
             File file = new File(path);
             if (!file.exists()) {
@@ -495,11 +492,11 @@ public class MyFrame implements SwingConstants{
 
     private void updateParamPanes() {
         prmsPanel.removeAll();
-        System.out.println("global Map: " + globalMap.keySet());
-        System.out.println("selectedSubType:" + selectedSubType);
+//        System.out.println("global Map: " + globalMap.keySet());
+//        System.out.println("selectedSubType:" + selectedSubType);
         paramsList = null;
         paramsList = new ArrayList<>(globalMap.get(selectedSubType).parameter);
-        System.out.println("params: " + paramsList);
+//        System.out.println("params: " + paramsList);
         if (paramsList != null && paramsList.size() > 0) {
             int len = paramsList.size();
             paramsPane = new JTabbedPane[len];
