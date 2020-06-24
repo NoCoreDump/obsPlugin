@@ -22,7 +22,7 @@ import static constant.GlobalConstant.*;
  * @create: 2020-05-10 14:47
  */
 public class MyFrame implements SwingConstants{
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // JFormDesigner - Variables
     private JPanel panel1;
     private JPanel panel2;
     private JPanel panel3;
@@ -66,8 +66,8 @@ public class MyFrame implements SwingConstants{
     private ArrayList<String> paramsList;
     private JTabbedPane[] paramsPane;
     private JTextField[] paramsTextFields;
+    private String filePath;
     private int osType; //0 - linux; 1 - windows
-    private String pomPath;
     private String runResult = "";
     private ResourceBundle message;
     private Locale locale;
@@ -78,6 +78,7 @@ public class MyFrame implements SwingConstants{
     }
 
     public void init() {
+        //国际化
         Locale locale0 = Locale.getDefault();
         String language = locale0.getLanguage();
         String lan;
@@ -96,11 +97,11 @@ public class MyFrame implements SwingConstants{
             osType = 1;
         }
         frame = new JFrame("obs");
+        filePath = (osType == 0) ? LINUX_PATH : WIN_PATH;
 
         //初始化小类
         Object[] subTypeList = menu.get(BIG_TYPE[0]).toArray();
         selectedSubType = (String)subTypeList[0];
-        System.out.println(selectedSubType);
         /******************************************************************/
         panel1 = new JPanel();
         panel2 = new JPanel();
@@ -184,9 +185,7 @@ public class MyFrame implements SwingConstants{
                         bigType.addItemListener(e -> {
                             if (e.getStateChange() == ItemEvent.SELECTED) {
                                 String selectedBigType = (String) bigType.getSelectedItem();
-
                                 Object[] items = menu.get(selectedBigType).toArray();
-//                                System.out.println("subtype : " + Arrays.toString(items));
                                 smallType.removeAllItems();
                                 for (Object item : items) {
                                     smallType.addItem(item);
@@ -296,10 +295,9 @@ public class MyFrame implements SwingConstants{
                         codeArea.setText("");
                         generateCode(paramsTextFields, paramsList);
                         generateReferenct();
-                        String filePath = "";
                         JFileChooser fileChooser;
-                        String defaultPath = (osType == 0) ? LINUX_PATH : WIN_PATH;
-                        fileChooser = new JFileChooser(defaultPath);
+
+                        fileChooser = new JFileChooser(filePath);
                         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                         int returnVal = fileChooser.showOpenDialog(fileChooser);
                         if(returnVal == JFileChooser.APPROVE_OPTION) {
@@ -399,20 +397,19 @@ public class MyFrame implements SwingConstants{
         frame.setVisible(true);
     }
 
-    /**
-     * @title
-     * @description popPath: pom.xml path; fileType:java python go js; apiName:selectedSubType
-     * @author sunwb
-     * @updateTime 20-6-15 上午9:49
-     * @throws
-     */
+    /*
+     * @Author sunwb
+     * @Description 运行生成的文件
+     * @Date 8:33 2020/6/24
+     * @Param [filePath, fileType, apiName]
+     * @return void
+     **/
     private void runFile(String filePath, String fileType, String apiName) {
 
         apiName = apiName.substring(0, apiName.indexOf(".java"));
         ProjectGenerateService projectGenerateService = new ProjectGenerateServiceImpl();
 
         //==============================利用cmd命令编译项目，执行class文件，生成结果返回至resString==========
-        System.out.println("filePath: " + filePath + "apiName: " + apiName);
         runResult = projectGenerateService.runProject(filePath,apiName);
         if (runResult == null || runResult.length() == 0) {
             runResult = "null";
@@ -421,6 +418,13 @@ public class MyFrame implements SwingConstants{
         System.out.println(runResult);
     }
 
+    /*
+     * @Author sunwb
+     * @Description 生成代码并显示
+     * @Date 8:32 2020/6/24
+     * @Param [paramsTextFields, paramsList]
+     * @return void
+     **/
     private void generateCode(JTextField[] paramsTextFields, ArrayList<String> paramsList) {
         if (paramsTextFields == null || paramsTextFields.length == 0) return;
         CodeGenerateServiceImpl codeGenerateService =new CodeGenerateServiceImpl();
@@ -457,11 +461,10 @@ public class MyFrame implements SwingConstants{
     private String generateFile(String path, String fileType) {
         String code = codeArea.getText();
         String fileName = globalMap.get(selectedSubType).filePath.get(fileType);
-        System.out.println("---------fileName:" + fileName);
         int x = fileName.indexOf('/');
         fileName = fileName.substring(x+1);
         try {
-//            区分Windows和Linux
+//            区分Windows和Linux的工程目录
             if (osType == 0) {
                 path = path + "/src/main/java/" + fileName;
             } else {
@@ -485,11 +488,25 @@ public class MyFrame implements SwingConstants{
         return "";
     }
 
+    /*
+     * @Author sunwb
+     * @Description 获取华为云官网的参考网站
+     * @Date 8:31 2020/6/24
+     * @Param []
+     * @return void
+     **/
     private void generateReferenct() {
         String referenceUrl = globalMap.get(selectedSubType).referenceWebsite;
         docTextArea.setText(referenceUrl);
     }
 
+    /*
+     * @Author sunwb
+     * @Description 根据参数列表刷新界面
+     * @Date 8:29 2020/6/24
+     * @Param []
+     * @return void
+     **/
     private void updateParamPanes() {
         prmsPanel.removeAll();
 //        System.out.println("global Map: " + globalMap.keySet());

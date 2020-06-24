@@ -32,7 +32,7 @@ public class DownloadContentUtil {
                 urlNameString += "?" + param;
             }
             URL realUrl = new URL(urlNameString);
-            System.out.println("URL --" + realUrl);
+            System.out.println("URL -- " + realUrl);
             // 打开和URL之间的连接
             URLConnection connection = realUrl.openConnection();
             // 设置通用的请求属性
@@ -164,7 +164,6 @@ public class DownloadContentUtil {
                 menu.put(element[0],new ArrayList<>());
             menu.get(element[0]).add(element[1]);
         }
-        System.out.println();
     }
     public static void main(String[] args) throws IOException {
         String url = "https://" + bucket_global + "." + endPoint_global + "/" + typeFileZh;
