@@ -1,10 +1,5 @@
 package service;
 public interface ProjectGenerateService {
-    /**
-     * 生成工程所需的POM文件
-     * @param pomPath pom文件的路径
-     */
-    public void pomFileGenerate(String pomPath);
 
     /**
      * 利用cmd运行项目

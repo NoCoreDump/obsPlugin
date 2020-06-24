@@ -1,8 +1,6 @@
 package utils;
 
 import com.alibaba.fastjson.JSON;
-import com.obs.services.ObsClient;
-import com.obs.services.model.ObsObject;
 
 import java.io.*;
 import java.net.URL;

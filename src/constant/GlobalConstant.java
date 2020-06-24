@@ -10,9 +10,6 @@ import java.util.Map;
 public class GlobalConstant {
     //节点
     public static String endPoint_global = "";
-    //密钥
-    public static String ak_global = "";
-    public static String sk_global = "";
     //桶名
     public static String bucket_global ="";
     //配置文件的名称
@@ -30,11 +27,6 @@ public class GlobalConstant {
     public static Map<String,List<String>> menu =new HashMap<>();
     //操作大类
     public static String[] BIG_TYPE;
-    //生成文件下拉选项
-    public static final String PYTHON = "python";
-    public static final String JAVA = "java";
-    public static final String JS = "js";
-    public static final String GO = "go";
 
     /***************** 常用参数名 **************************/
     public static final String AK = "ak";

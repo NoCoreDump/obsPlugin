@@ -47,8 +47,6 @@ public class CodeGenerator extends AnAction {
         try {
             inputStreamReader = new InputStreamReader(this.getClass().getResourceAsStream("/config.properties"), "utf-8");
             props.load(inputStreamReader);
-            ak_global = props.getProperty(AK);
-            sk_global = props.getProperty(SK);
             endPoint_global = props.getProperty(ENDPOINT);
             bucket_global = props.getProperty(BUCKET);
             typeFileEn = props.getProperty(TYPE_FILE_EN);
