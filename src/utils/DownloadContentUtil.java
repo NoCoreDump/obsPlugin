@@ -137,7 +137,7 @@ public class DownloadContentUtil {
         //找到第一行
         while(lines[idx].length()==0||lines[idx].charAt(0)=='#')
             idx++;
-        String[] head = lines[idx++].split(" ");
+        String[] head = lines[idx++].split("\\s+");
         //添加语言类别
         for (int i = 4; i <head.length; i++) {
             languageList.add(head[i]);
@@ -146,7 +146,7 @@ public class DownloadContentUtil {
             //跳过无效行
             if(lines[idx].length()==0||lines[idx].charAt(0)=='#')
                 continue;
-            String[] element = lines[idx].split(" ");
+            String[] element = lines[idx].split("\\s+");
             ObsApi obsApi=new ObsApi(new ArrayList<>(),element[3],new HashMap<>());
             String[] par = element[2].split(",");
             obsApi.parameter.addAll(Arrays.asList(par));
