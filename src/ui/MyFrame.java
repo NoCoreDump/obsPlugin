@@ -1,19 +1,18 @@
+package ui;
 
-import com.alibaba.fastjson.JSON;
-import constant.GlobalConstant;
+import javafx.scene.control.Hyperlink;
 import org.jdesktop.swingx.VerticalLayout;
 import service.ProjectGenerateService;
 import service.impl.CodeGenerateServiceImpl;
-import service.impl.ProjectGenerateServiceImpl;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.io.*;
 import java.util.*;
-import java.util.List;
 
 import static constant.GlobalConstant.*;
+import static utils.RunUtil.runFile;
 
 /**
  * @program: MyPlugin
@@ -91,14 +90,16 @@ public class MyFrame implements SwingConstants{
         message = ResourceBundle.getBundle("message", locale);
         String osName = System.getProperties().getProperty("os.name");
         System.out.println(osName);
-        if (LINUX.equals(osName)) {
+        //操作系统类型
+        if (LINUX.contains(osName)) {
             osType = 0;
         } else {
             osType = 1;
         }
-        frame = new JFrame("obs");
+        //根据操作类型选择默认路径
         filePath = (osType == 0) ? LINUX_PATH : WIN_PATH;
 
+        frame = new JFrame("obs");
         //初始化小类
         Object[] subTypeList = menu.get(BIG_TYPE[0]).toArray();
         selectedSubType = (String)subTypeList[0];
@@ -143,6 +144,13 @@ public class MyFrame implements SwingConstants{
         runResultTextArea = new JTextPane();
 
     }
+    /*
+     * @Author sunwb
+     * @Description UI布局
+     * @Date 21:01 2020/6/25
+     * @Param []
+     * @return void
+     **/
     public void placePanel(){
         int xSize = 1100;
         int ySize = 800;
@@ -185,6 +193,8 @@ public class MyFrame implements SwingConstants{
                         bigType.addItemListener(e -> {
                             if (e.getStateChange() == ItemEvent.SELECTED) {
                                 String selectedBigType = (String) bigType.getSelectedItem();
+
+                                //选择了大类后，小类也应更新
                                 Object[] items = menu.get(selectedBigType).toArray();
                                 smallType.removeAllItems();
                                 for (Object item : items) {
@@ -206,6 +216,7 @@ public class MyFrame implements SwingConstants{
                         smallType.addItemListener(e->{
                             if (e.getStateChange() == ItemEvent.SELECTED) {
                                 selectedSubType = (String)smallType.getSelectedItem();
+                                //每次选择的接口改变，参数都要刷新
                                 updateParamPanes();
                             }
                         });
@@ -295,8 +306,9 @@ public class MyFrame implements SwingConstants{
                         codeArea.setText("");
                         generateCode(paramsTextFields, paramsList);
                         generateReferenct();
-                        JFileChooser fileChooser;
 
+                        //选择工程目录
+                        JFileChooser fileChooser;
                         fileChooser = new JFileChooser(filePath);
                         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                         int returnVal = fileChooser.showOpenDialog(fileChooser);
@@ -311,8 +323,8 @@ public class MyFrame implements SwingConstants{
                         }
                         String apiName = generateFile(filePath, languageBox.getSelectedItem().toString());
                         System.out.println("********** apiName: " + apiName);
-                        runFile(filePath, languageBox.getSelectedItem().toString(), apiName);
-
+                        runResult = runFile(filePath, languageBox.getSelectedItem().toString(), apiName);
+                        runResultTextArea.setText(runResult);
                     });
                     mid.add(buttonRun);
                 }
@@ -347,7 +359,7 @@ public class MyFrame implements SwingConstants{
                     {
 
                         //---- docTextArea ----
-                        docTextArea.setText("https://support.huaweicloud.com/sdk-java-devg-obs/obs_21_0401.html");
+                        docTextArea.setText(defaultWebsite);
                         docScrollPane.setViewportView(docTextArea);
                     }
                     documentPane.addTab(message.getString("reference"), docScrollPane);
@@ -397,26 +409,7 @@ public class MyFrame implements SwingConstants{
         frame.setVisible(true);
     }
 
-    /*
-     * @Author sunwb
-     * @Description 运行生成的文件
-     * @Date 8:33 2020/6/24
-     * @Param [filePath, fileType, apiName]
-     * @return void
-     **/
-    private void runFile(String filePath, String fileType, String apiName) {
 
-        apiName = apiName.substring(0, apiName.indexOf(".java"));
-        ProjectGenerateService projectGenerateService = new ProjectGenerateServiceImpl();
-
-        //==============================利用cmd命令编译项目，执行class文件，生成结果返回至resString==========
-        runResult = projectGenerateService.runProject(filePath,apiName);
-        if (runResult == null || runResult.length() == 0) {
-            runResult = "null";
-        }
-        runResultTextArea.setText(runResult);
-        System.out.println(runResult);
-    }
 
     /*
      * @Author sunwb
@@ -456,7 +449,7 @@ public class MyFrame implements SwingConstants{
      * @Date 23:02 2020/6/7
      * @Param path 工程目录
      * @Param fileType 文件类型：java python go ...
-     * @return void
+     * @return String
      **/
     private String generateFile(String path, String fileType) {
         String code = codeArea.getText();
@@ -519,6 +512,7 @@ public class MyFrame implements SwingConstants{
             paramsPane = new JTabbedPane[len];
             paramsTextFields = new JTextField[len];
             for (int i = 0; i < len; i++) {
+                //没有参数时，配置文件中用”null“字符串作为占位符
                 if (paramsList.get(i).equals("null")) {
                     break;
                 }
@@ -534,8 +528,5 @@ public class MyFrame implements SwingConstants{
 
     }
 
-    public static void main(String[] args) {
-        new CodeGenerator().init();
-        new MyFrame();
-    }
+
 }

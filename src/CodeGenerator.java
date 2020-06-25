@@ -1,10 +1,9 @@
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import constant.GlobalConstant;
+import ui.MyFrame;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
@@ -24,8 +23,7 @@ public class CodeGenerator extends AnAction {
         Locale locale = Locale.getDefault();
         String languageType = locale.getLanguage();
         initConfig();
-
-        //从OBS上拉取全局配置信息
+        //根据语言环境选择配置文件
         try {
             if ("zh".equals(languageType)) {
                 getGlobalConfig(getStrContentFromOBS(URL + typeFileZh, null));
@@ -35,12 +33,18 @@ public class CodeGenerator extends AnAction {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //BIG_TYPE
+        //大类
         BIG_TYPE = new String[menu.size()];
         menu.keySet().toArray(BIG_TYPE);
     }
 
-    public void initConfig() {
+    /*
+     * @Author sunwb
+     * @Description 读取本地全局配置文件
+     * @Date 20:53 2020/6/25
+     * @Param []
+     * @return void
+     **/public void initConfig() {
         //读取配置文件
         InputStreamReader inputStreamReader = null;
         Properties props = new Properties();

@@ -1,5 +1,8 @@
 package utils;
 
+import service.ProjectGenerateService;
+import service.impl.ProjectGenerateServiceImpl;
+
 import java.io.*;
 
 public class RunUtil {
@@ -35,6 +38,25 @@ public class RunUtil {
         }
     }
 
+    /*
+     * @Author sunwb
+     * @Description 运行生成的文件
+     * @Date 8:33 2020/6/24
+     * @Param [filePath, fileType, apiName]
+     * @return void
+     **/
+    public static String runFile(String filePath, String fileType, String apiName) {
+
+        apiName = apiName.substring(0, apiName.indexOf(".java"));
+        ProjectGenerateService projectGenerateService = new ProjectGenerateServiceImpl();
+
+        //==============================利用cmd命令编译项目，执行class文件，生成结果返回至resString==========
+        String runResult = projectGenerateService.runProject(filePath,apiName);
+        if (runResult == null || runResult.length() == 0) {
+            runResult = "null";
+        }
+        return runResult;
+    }
     public static String runFile(String projectPath, String apiName) {
         // Java调用 dos命令
         String javaCommand = "java ";

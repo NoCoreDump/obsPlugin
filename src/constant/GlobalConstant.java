@@ -23,11 +23,12 @@ public class GlobalConstant {
     public static List<String> languageList = new ArrayList<>();//语言的种类
     //大类,小类||api 格式:大类,小类->api信息
     public static Map<String, ObsApi> globalMap =new HashMap<>();
-    //格式：名称->小类list
+    //格式：大类->小类list
     public static Map<String,List<String>> menu =new HashMap<>();
     //操作大类
     public static String[] BIG_TYPE;
-
+    //默认的web 地址
+    public static String defaultWebsite = "https://support.huaweicloud.com/qs-obs/obs_qs_1000.html";
     /***************** 常用参数名 **************************/
     public static final String AK = "ak";
     public static final String SK = "sk";
@@ -39,4 +40,5 @@ public class GlobalConstant {
     /*****************default JFileChooser path**********/
     public static final String LINUX_PATH = "/home/";
     public static final String WIN_PATH = "D:\\";
+
 }

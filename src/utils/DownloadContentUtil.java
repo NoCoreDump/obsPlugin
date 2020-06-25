@@ -15,9 +15,9 @@ import static constant.GlobalConstant.*;
  */
 public class DownloadContentUtil {
     /**
-     *  从OBS拉取代码文件，替换参数内容，生成可执行文本内容
+     *  通过http请求获取公共对象的内容
      * @param url
-     * @param param
+     * @param param；get请求的参数, 不带参数时，传null
      * @return
      * @throws IOException
      */
@@ -72,64 +72,14 @@ public class DownloadContentUtil {
         return result;
     }
 
-    /**
-     * 从OBS上拉取配置文件，包含各个类别信息、每个接口的参数信息等
-     * @param url Json配置文件的URL
-     * @param param get请求的参数
-     * @return
-     */
-    public static Map<String,Object> getMapContentFromOBS(String url, String param) {
-        String result = "";
-        InputStream in = null;
-        try {
-            String urlNameString = url;
-            if (param != null && param.length() > 0) {
-                urlNameString += "?" + param;
-            }
-            URL realUrl = new URL(urlNameString);
-            // 打开和URL之间的连接
-            URLConnection connection = realUrl.openConnection();
-            // 设置通用的请求属性
-            connection.setRequestProperty("accept", "*/*");
-            connection.setRequestProperty("connection", "Keep-Alive");
-            connection.setRequestProperty("user-agent",
-                    "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
-            // 建立实际的连接
-            connection.connect();
-            // 获取所有响应头字段
-            Map<String, List<String>> map = connection.getHeaderFields();
-            // 遍历所有的响应头字段
-//            for (String key : map.keySet()) {
-//                System.out.println(key + "--->" + map.get(key));
-//            }
-            in = connection.getInputStream();
 
-            try {
-                result = new BufferedReader(new InputStreamReader(in, "utf-8"))
-                        .lines().parallel().collect(Collectors.joining(System.lineSeparator()));
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-
-        } catch (Exception e) {
-            System.out.println("Get error！" + e);
-            e.printStackTrace();
-        }
-        // 使用finally块来关闭输入流
-        finally {
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            } catch (Exception e2) {
-                e2.printStackTrace();
-            }
-        }
-        Map<String,Object> maps = (Map<String,Object>) JSON.parse(result);
-        return maps;
-    }
-
-
+    /*
+     * @Author sunwb
+     * @Description 根据obs上读取到的文件建立全局map映射，便于在代码中使用
+     * @Date 19:41 2020/6/25
+     * @Param [content]
+     * @return void
+     **/
     public static void getGlobalConfig(String content){
         content=content.replace("\r","");
         String[] lines=content.split("\n");
